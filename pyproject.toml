@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mws-compactfacts"
+version = "0.1.0"
+description = "Measured, offline-first preparation for MWS CompactFactExtraction"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = ["pydantic==2.14.1", "psutil==7.2.2"]
+
+[project.optional-dependencies]
+ml = ["torch==2.14.1", "transformers==5.20.2", "peft==0.21.2", "accelerate==1.15.0", "safetensors==0.8.0"]
+
+[dependency-groups]
+dev = ["pytest==9.1.1", "ruff==0.17.1", "pytest-cov==7.1.0"]
+
+[project.scripts]
+compactfacts = "compactfacts.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/compactfacts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["ml: optional real PyTorch/Transformers mechanics checks"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+

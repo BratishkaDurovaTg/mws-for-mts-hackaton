@@ -1,0 +1,25 @@
+name: Core contracts and reproducibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@18d369b23da25a81e9458561248e1aafff6a70fa # v10.3.1
+        with:
+          version: "0.10.2"
+          enable-cache: true
+      - run: uv sync --locked --no-editable
+      - run: uv run --locked --no-editable ruff check src tests
+      - run: uv run --locked --no-editable ruff format --check src tests
+      - run: uv run --locked --no-editable pytest -q
+      - run: uv run --locked --no-editable compactfacts validate --input tests/fixtures/synthetic.jsonl
+      - run: uv run --locked --no-editable compactfacts eda --input tests/fixtures/synthetic.jsonl --output artifacts/eda.json
+      - run: uv run --locked --no-editable compactfacts split --input tests/fixtures/synthetic.jsonl --output artifacts/split
+      - run: uv run --locked --no-editable compactfacts infer --input tests/fixtures/synthetic.jsonl --output artifacts/predictions.jsonl
+      - run: uv run --locked --no-editable compactfacts evaluate --gold tests/fixtures/synthetic.jsonl --predictions artifacts/predictions.jsonl --output artifacts/metrics.json

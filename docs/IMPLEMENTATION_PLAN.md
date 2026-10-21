@@ -84,6 +84,11 @@ generation validation after overfit, no automatic full training on fixtures.
 | D05 | Strict parser default; repair explicitly measured | No silent recovery-as-success; constrained engine waits for benchmark |
 | D06 | No model winner yet | Metadata is not task validation; 4 compact candidates under review |
 | D07 | No autoresearch loop yet | Official data/scorer unavailable; do not optimize synthetic surrogate |
+| D08 | Keep failed retries and scorer attribution observable | Adversarial evaluator regression cases |
+| D09 | Protect IO boundaries and ledger history | Overwrite/newline defects reproduced before fix |
+| D10 | Noneditable install + wheel replay | Host hides editable .pth; installed import verified |
+| D11 | Explicit preparation + content-based model gates | Lazy GPU timing and same-size weight identity defects |
+| D12 | Require official score direction | Unknown objective cannot be assumed maximized |
 
 При крупных новых изменениях добавлять решение, baseline и acceptance
 до изменения; после — command, result и limitation в VERIFICATION/ledger.

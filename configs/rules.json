@@ -1,0 +1,7 @@
+{
+  "backend": "rules",
+  "seed": 42,
+  "max_input_chars": 100000,
+  "parser_mode": "strict",
+  "require_evidence": true
+}
