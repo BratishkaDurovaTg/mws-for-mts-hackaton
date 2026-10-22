@@ -82,3 +82,62 @@ Multi-task loss, retrieval, augmentation and quantization are separate ablations
 | Next empirical test? |Pinned public adapter/occurrence-span integrity;then local model baseline after budget/data gates |
 
 Stop broad research. Evidence/history lives here; next work follows BACKLOG.md.
+
+## Telecom/cloud/support addendum — 2026-10-22 (D18)
+
+Bounded update: three new primary sources, all **INDUSTRIAL LESSON**. These
+are author-reported results, not independent replications or official MWS-case
+requirements. PUBLIC DATASET/PUBLIC CODE availability is **not established**
+by the inspected sources; none is acquired or used for training. No MARKETING
+CLAIM is used to choose an architecture. The current pre-spec P0 is one real
+ML runtime/PEFT vertical slice; the earlier 3–5-model comparison is a later,
+official-data decision, not work to start now.
+
+- **MWS second-line ticket analysis — INDUSTRIAL LESSON.**
+  [SRE lead's report](https://habr.com/ru/companies/ru_mts/articles/1051784/):
+  Jira fields/attachments plus documentation, logs and database evidence feed a
+  staged workflow. Engineers reported approximately 40% correct, 45% partial
+  and 15% incorrect answers; the author explicitly calls this an informal
+  engineering assessment, not a controlled experiment. Sample size and a
+  speedup estimate are not established. **Transfer hypothesis:** classify
+  missing-input, unsupported-inference and extraction errors separately; a
+  request for missing information must not be counted as extracted fact gold.
+  **Future test:** on official validation, separate facts present in supplied
+  text from those requiring unavailable logs/tools. **Risk/decision:** this is
+  investigation/answer quality, not extraction F1; do not copy its large-model,
+  multi-service workflow into the compact pipeline. MWS gain remains UNKNOWN.
+
+- **MWS AI subscriber bots — INDUSTRIAL LESSON.**
+  [Author's pilot account](https://habr.com/ru/companies/mts_ai/articles/956790/):
+  retain rules/ML intent routing and call Cotype only for selected scenarios,
+  with fallback to the previous path. The 2.5-month pilot reports 5–10%
+  improvement in satisfaction/automation metrics depending on scenario/channel,
+  but slower responses and almost doubled change-delivery time. Sample sizes,
+  uncertainty and whether the gain means relative percent or percentage points
+  are unspecified. **Transfer hypothesis:** deterministic handling of literal
+  IDs can coexist with semantic ML rather than being replaced by it.
+  **Future test:** after schema arrival, compare existing rules, model and
+  candidate-verification on the same official ID slice, including conflicts
+  and added latency. **Risk/decision:** dialogue business metrics do not prove
+  extraction quality; no automatic fact union or new routing framework now.
+
+- **Microsoft SoftNER cloud incidents — INDUSTRIAL LESSON.**
+  [Author paper, v2, §§IV/VII](https://arxiv.org/html/2101.05961v2): key-value
+  pairs/tables bootstrap labels; a BiLSTM-CRF jointly predicts entity type and
+  data type (GUID/IP/URI etc.). Reported 0.96 precision at rank 50 concerns
+  discovered entity types; reported ~0.96 average NER F1 uses a later-in-time
+  20% test split labelled by the same automatic pipeline. These are distinct
+  measurements; neither is independently annotated MWS performance. Incident
+  count is withheld. **Transfer hypothesis:** literal candidate type and local
+  context may help distinguish resource IDs from other GUIDs.
+  **Future test:** only if official labels reward it, compare context-only
+  extraction with datatype-assisted candidate verification on human gold.
+  **Risk/decision:** automatic-label errors and value propagation can confuse
+  roles and contaminate splits; do not propagate labels across frozen groups
+  or train from this source now. Independent transfer/compactness is UNKNOWN.
+
+Outcome for this documentation update: three actionable hypotheses retained,
+zero datasets/models acquired and zero experiments executed. Stop this research
+branch; validate real ML mechanics next. Auxiliary training still requires rights,
+organizer permission,
+task compatibility and improvement over MWS-only on frozen official validation.

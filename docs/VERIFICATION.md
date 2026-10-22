@@ -127,3 +127,31 @@ their status must be read from the corresponding commit checks.
   final local checks:279passed, Ruff check/format passed, no PYTHONPATH.
 - Five candidate checkpoints include one small encoder that still needs a
   trained extraction head. No model weights/large datasets/training jobs run.
+
+## Real-runtime iteration2026-10-22 — D17–D19
+
+Current user master freezes infrastructure and prioritizes one real ML slice;
+earlier no-weights status above is historical. Locked ML extra installed
+unchanged: torch2.14.1/transformers5.20.2/peft0.21.2/accelerate1.15.0/
+safetensors0.8.0. Hardware measured: AppleM4,16GiB unified RAM, MPS available,
+CUDA unavailable. No external inference API or auxiliary training is used.
+
+Qwen2.5-0.5B-Instruct revision `7ae557604adf67be50417f59c2c2f167def9a775`
+downloaded to ignored `models/`;988097824weight bytes, SHA256
+`fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe`
+matches Hub LFS digest. Native local-only safetensors load succeeded in BF16
+on MPS:494032768parameters,11.685s including initial imports,1006776576MPS
+allocated bytes after load (snapshot, not peak). Acquisition/hardware/token
+length evidence lives in `artifacts/real-ml/`; actual inference and PEFT gates
+are still in progress at this checkpoint.
+
+Before generation, selected six existing synthetic cases (empty, HTTP code,
+UUID, negation, version/history, two-message correction context). Fixed seed42,
+512new-token limit, strict parser, zero retries. This is a mechanics diagnostic,
+not an independent validation set or expected MWS quality. All20existing fixture
+SFT sequences fit2602tokens; no silent truncation or new guessed ontology.
+
+Day-1 runbook now has timed30m/2h/4h/8h actions and exact-source requirement
+capture. Backlog is current. D18 adds three bounded industrial lessons, without
+data acquisition or external-data training. The next empirical gate is real
+inference/profiling followed by one finite LoRA smoke and adapter reload.

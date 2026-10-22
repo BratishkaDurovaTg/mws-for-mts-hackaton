@@ -5,6 +5,15 @@ tokenizer configs. Веса не скачивались, inference/training не
 Это начальный shortlist для контролируемого сравнения, не выбранная модель,
 не полный каталог актуальных моделей и не ограничение размера от MWS.
 
+Runtime probe2026-10-22: select only Qwen2.5-0.5B-Instruct at
+`7ae557604adf67be50417f59c2c2f167def9a775` (Apache2.0,988097824weight bytes).
+Current bounded check included [Qwen3.5-0.8B](https://huggingface.co/Qwen/Qwen3.5-0.8B),
+revision `2fc06364715b967f1860aea9cf38778875588b17`:1746942600bytes,
+image-text-to-text, multimodal loader. The older native text-only probe
+reduces acquisition/runtime cost for a mechanical check; it is not a final
+model comparison. Existing locked ML extra installs unchanged on M4/16GiB;
+MPS available, CUDA unavailable. Actual quality/compatibility remains to be measured.
+
 Дополнение2026-10-22: пятый кандидат —
 [cointegrated/rubert-tiny2](https://huggingface.co/cointegrated/rubert-tiny2/blob/e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae/README.md),
 29.4M, MIT, BERT encoder3layers/hidden312/context2048, F32 checkpoint
