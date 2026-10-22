@@ -62,6 +62,13 @@ def main():
             "scope": "real pretrained synthetic-only diagnostic; NOT MWS QUALITY",
             "input_sha256": file_hash(args.input),
             "config": config.model_dump(),
+            "loaded_model_class": type(extractor._model).__name__,
+            "loaded_adapters": sorted(getattr(extractor._model, "peft_config", {})),
+            "adapter_weight_sha256": file_hash(
+                Path(config.adapter_path) / "adapter_model.safetensors"
+            )
+            if config.adapter_path
+            else None,
             "examples": examples,
             "metrics": evaluate(tickets, predictions),
             "mps_current_allocated_bytes": torch.mps.current_allocated_memory() if mps else None,
