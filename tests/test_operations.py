@@ -203,3 +203,41 @@ def test_blank_decision_rule_prevents_benchmark_computation(tmp_path, monkeypatc
         )
         == 2
     )
+
+
+def test_span_gold_is_validated_before_benchmark_computation(tmp_path, monkeypatch):
+    import compactfacts.cli as cli
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("contextual fact evidence is not exact entity-span gold")
+
+    monkeypatch.setattr(cli, "benchmark", forbidden)
+    assert (
+        main(
+            [
+                "run",
+                "--input",
+                str(FIXTURE),
+                "--output",
+                str(tmp_path / "out"),
+                "--id",
+                "x",
+                "--hypothesis",
+                "fixture",
+                "--change",
+                "fixture",
+                "--expected-result",
+                "fixture",
+                "--decision-rule",
+                "fixture",
+                "--conclusion",
+                "fixture",
+                "--decision",
+                "KEEP",
+                "--reason",
+                "fixture",
+                "--span-diagnostic",
+            ]
+        )
+        == 2
+    )

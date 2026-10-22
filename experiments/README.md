@@ -15,6 +15,8 @@ Synthetic results must never be interpreted as hidden-test predictions.
 Large or private artifacts remain ignored under `artifacts/`. Small, explicitly
 synthetic preparation results are checked into `experiments/baselines/` for
 review. The ledger includes their recorded paths and actual measurements.
+`published_artifact` points to the committed review copy. Original artifact
+paths, source revision and measured values are preserved as run provenance.
 Real support predictions/evidence must stay out of Git and shared logs.
 
 Freeze a split before model comparison. Use identical data hashes, prompt,

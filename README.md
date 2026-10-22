@@ -22,8 +22,8 @@ Transformers, PEFT и Accelerate — отдельный opt-in `ml` extra.
 
 ```bash
 uv sync --locked --no-editable
-uv run --locked --no-editable ruff check src tests
-uv run --locked --no-editable ruff format --check src tests
+uv run --locked --no-editable ruff check src tests scripts
+uv run --locked --no-editable ruff format --check src tests scripts
 uv run --locked --no-editable pytest -q
 ```
 
@@ -110,6 +110,12 @@ uv run --locked --no-editable compactfacts run --input tests/fixtures/synthetic.
 Run сохраняет predictions/metrics/benchmark/config/provenance и append-only
 `experiments/runs.jsonl`. [Ledger policy](experiments/README.md).
 Малые подготовительные результаты: `experiments/baselines/`.
+Полный повтор без публикации результатов (нужен новый output path):
+
+```bash
+uv run --locked --no-editable python scripts/reproduce_preparation.py --output artifacts/preparation-replay
+```
+
 Сравнивайте configs на одном frozen dev:
 
 ```bash
@@ -135,7 +141,7 @@ logical weight/adapter bytes, generated tokens/sec. RAM включает interpr
 ## Локальная LLM и PEFT
 
 Сначала [candidate matrix](docs/MODEL_CANDIDATES.md), затем official
-license/runtime/budget check. Четыре checkpoint — контролируемый shortlist,
+license/runtime/budget check. Пять checkpoint, включая encoder, — контролируемый shortlist,
 не утверждение об актуальном лучшем варианте. Task quality не измерено.
 
 После выбора окружения и download budget:

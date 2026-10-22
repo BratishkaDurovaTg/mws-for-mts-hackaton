@@ -1,0 +1,295 @@
+{
+  "schema_version": "compactfacts.eda.v1",
+  "status": "exploratory",
+  "scope": {
+    "records_requested": 20,
+    "records_inspected": 20,
+    "all_supplied_records_inspected": true,
+    "sampling": "none",
+    "record_budget": 100000,
+    "text_character_budget": 67108864,
+    "input_stage": "validated canonical tickets; raw input typing not observed",
+    "ordering": "supplied scope; no representativeness assumption"
+  },
+  "privacy": {
+    "raw_texts_or_ids_emitted": false,
+    "category_names": "sha256 pseudonyms",
+    "pseudonyms_are_anonymization": false
+  },
+  "counts": {
+    "tickets": 20,
+    "messages": 25,
+    "labelled_tickets": 20,
+    "unlabelled_tickets": 0,
+    "labelled_empty_tickets": 3,
+    "facts": 28,
+    "empty_messages": 1,
+    "tickets_without_messages": 0,
+    "facts_without_evidence": 0,
+    "duplicate_annotated_facts": 0
+  },
+  "schema": {
+    "field_types": {
+      "ticket.id": {
+        "str": 20
+      },
+      "ticket.messages": {
+        "list": 20
+      },
+      "ticket.facts": {
+        "list": 20,
+        "null": 0
+      },
+      "ticket.group_id": {
+        "str": 20,
+        "null": 0
+      },
+      "message.content": {
+        "str": 25
+      }
+    },
+    "null_counts": {
+      "facts": 0,
+      "group_id": 0,
+      "message.timestamp": 25
+    },
+    "metadata_value_types": {
+      "sha256:2d53b7bd95db117fd8a0": {
+        "str": 20
+      },
+      "sha256:43fd6243003b46e2937c": {
+        "list": 20
+      },
+      "sha256:85da8434c70bf817c2ac": {
+        "bool": 20
+      }
+    }
+  },
+  "lengths": {
+    "ticket_characters": {
+      "count": 20,
+      "min": 0,
+      "max": 6477,
+      "mean": 365.85,
+      "sd": 1402.1190846358236,
+      "median": 49.0,
+      "q25": 29.0,
+      "q75": 60.75,
+      "iqr": 31.75,
+      "mad": 18.0,
+      "p95": 390.35000000000457,
+      "iqr_outlier_count": 1,
+      "mean_without_iqr_outliers": 44.21052631578947
+    },
+    "message_characters": {
+      "count": 25,
+      "min": 0,
+      "max": 6408,
+      "mean": 292.68,
+      "sd": 1248.393903221255,
+      "median": 36,
+      "q25": 28.0,
+      "q75": 51.0,
+      "iqr": 23.0,
+      "mad": 13,
+      "p95": 69.19999999999999,
+      "iqr_outlier_count": 1,
+      "mean_without_iqr_outliers": 37.875
+    },
+    "ticket_whitespace_units": {
+      "count": 20,
+      "min": 0,
+      "max": 875,
+      "mean": 49.8,
+      "sd": 189.33953628336582,
+      "median": 5.5,
+      "q25": 5.0,
+      "q75": 8.25,
+      "iqr": 3.25,
+      "mad": 1.5,
+      "p95": 58.00000000000061,
+      "iqr_outlier_count": 3,
+      "mean_without_iqr_outliers": 6.235294117647059
+    },
+    "message_whitespace_units": {
+      "count": 25,
+      "min": 0,
+      "max": 864,
+      "mean": 39.84,
+      "sd": 168.2418925238301,
+      "median": 5,
+      "q25": 5.0,
+      "q75": 7.0,
+      "iqr": 2.0,
+      "mad": 1,
+      "p95": 9.799999999999997,
+      "iqr_outlier_count": 2,
+      "mean_without_iqr_outliers": 5.739130434782608
+    },
+    "ticket_model_tokens": null,
+    "message_model_tokens": null,
+    "tokenizer_supplied": false,
+    "token_count_scope": "sum of message content encodings; excludes chat template",
+    "unavailable_token_reason": "real tokenizer not supplied",
+    "units": "characters=Unicode code points; whitespace units are not model tokens",
+    "outlier_policy": "1.5*IQR flags and mean sensitivity; no exclusion or deletion",
+    "facts_per_labelled_ticket": {
+      "count": 20,
+      "min": 0,
+      "max": 3,
+      "mean": 1.4,
+      "sd": 0.8,
+      "median": 1.5,
+      "q25": 1.0,
+      "q75": 2.0,
+      "iqr": 1.0,
+      "mad": 0.5,
+      "p95": 2.0500000000000007,
+      "iqr_outlier_count": 0,
+      "mean_without_iqr_outliers": 1.4
+    }
+  },
+  "fact_types": {
+    "sha256:26dd01f6c1d5a8731bc2": 1,
+    "sha256:3e9b10a4431746317edc": 2,
+    "sha256:43ccc4d00da648961a13": 3,
+    "sha256:49d5c77e3ddb711e0dd3": 1,
+    "sha256:6b6fdce2c6f9762666c2": 1,
+    "sha256:a8aefc374937a4d288f3": 1,
+    "sha256:a945e7407a1b885b9f96": 1,
+    "sha256:b886ccef77b8638fa081": 13,
+    "sha256:e4442e9b2619beca43ab": 2,
+    "sha256:e9a1b6946539eafb0979": 1,
+    "sha256:f4c9b43e422aa0f604c3": 2
+  },
+  "qualifiers": {
+    "polarity": {
+      "affirmed": 23,
+      "negated": 5
+    },
+    "temporality": {
+      "unknown": 18,
+      "historical": 3,
+      "current": 7
+    },
+    "certainty": {
+      "asserted": 27,
+      "hypothetical": 1
+    }
+  },
+  "roles": {
+    "sha256:3190d261d186aeead3a8": {
+      "messages": 23,
+      "characters": 7260,
+      "whitespace_units": 985
+    },
+    "sha256:aab3025a4508237ff636": {
+      "messages": 2,
+      "characters": 57,
+      "whitespace_units": 11
+    }
+  },
+  "language_heuristic": {
+    "method": "presence of Cyrillic and ASCII Latin letters",
+    "tickets": {
+      "ru": 12,
+      "en": 1,
+      "mixed": 6,
+      "unknown": 1
+    },
+    "messages": {
+      "ru": 17,
+      "en": 1,
+      "mixed": 6,
+      "unknown": 1
+    },
+    "limitation": "script heuristic, not language identification; identifiers affect it"
+  },
+  "patterns": {
+    "ipv4": {
+      "tickets": 1,
+      "messages": 1,
+      "occurrences": 1
+    },
+    "uuid": {
+      "tickets": 1,
+      "messages": 1,
+      "occurrences": 1
+    },
+    "error_code": {
+      "tickets": 10,
+      "messages": 13,
+      "occurrences": 15
+    },
+    "version": {
+      "tickets": 3,
+      "messages": 3,
+      "occurrences": 4
+    },
+    "url": {
+      "tickets": 1,
+      "messages": 1,
+      "occurrences": 1
+    },
+    "stacktrace": {
+      "tickets": 0,
+      "messages": 0,
+      "occurrences": 0
+    },
+    "code": {
+      "tickets": 0,
+      "messages": 0,
+      "occurrences": 0
+    },
+    "timestamp": {
+      "tickets": 1,
+      "messages": 1,
+      "occurrences": 1
+    },
+    "mixed_script_word": {
+      "tickets": 0,
+      "messages": 0,
+      "occurrences": 0
+    }
+  },
+  "duplicates": {
+    "duplicate_ticket_ids": 0,
+    "exact_text_groups": 1,
+    "exact_text_excess_records": 1,
+    "template_groups": 1,
+    "template_excess_records": 1,
+    "conflicting_annotation_groups": 0,
+    "mixed_label_coverage_exact_groups": 0,
+    "annotation_identity": "type,value,polarity,temporality,certainty; evidence excluded",
+    "near_duplicate_screen": {
+      "method": "max_sequence_ratio_word3_jaccard",
+      "candidate_method": "all_pairs",
+      "threshold": 0.9,
+      "pair_budget": 20000,
+      "possible_pairs": 190,
+      "compared_pairs": 190,
+      "detected_pairs": 1,
+      "candidate_coverage_complete": true,
+      "comparison_complete": false,
+      "sequence_char_limit": 4000,
+      "sequence_limited_records": 1,
+      "shingle_limit": 2048,
+      "shingle_limited_records": 0,
+      "limitations": [
+        "near similarity is a heuristic, not semantic duplicate adjudication",
+        "bounded candidate windows can miss links when candidate_coverage_complete=false",
+        "long-record comparison uses bounded shingles; no sequence prefix equality shortcut"
+      ]
+    },
+    "automatic_deletion": false
+  },
+  "limitations": [
+    "official data dictionary, annotation policy and independent unit remain unknown",
+    "support-ticket messages are repeated observations within tickets",
+    "group dependencies require supplied metadata and split review",
+    "regex patterns and language labels are exploratory diagnostics, not semantic truth",
+    "no causal or leaderboard-quality inference follows from these aggregates",
+    "near-duplicate completeness is separate from full-scope aggregate coverage"
+  ],
+  "raw_data_changed": false
+}

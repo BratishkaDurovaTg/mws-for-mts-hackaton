@@ -92,6 +92,7 @@ generation validation after overfit, no automatic full training on fixtures.
 | D13 | Frozen public auxiliary suite, separate from MWS/synthetic tests | NLU++ pinned CC-BY-4.0 slots; <=256KiB per source file; exact spans and attribution, no relabelling or automatic training mix. Acceptance: source/hash/span checks and reproducible conversion |
 | D14 | Add exact span bridge and occurrence-aware diagnostic | Generative output is not assumed superior; span detector must copy source values. Baseline: canonical set scorer ignores occurrences. Acceptance: nested/repeated-value/Unicode/out-of-bounds tests; no learned-model claim |
 | D15 | Four-field experiment contract | New runs require Hypothesis/Change/Expected result/Decision rule. Acceptance: CLI/ledger reject missing fields; previous records remain append-only |
+| D16 | Final installed replay and pre-compute span gate | Hypothesis: rejecting contextual evidence before profiling avoids invalid span experiments. Baseline: clean wheel replay at 1e3b83b,278 tests, first Linux CI passed at 5eadc08. Acceptance: forbidden-benchmark regression, installed full replay in CI, reviewed synthetic-only snapshots and final-head checks |
 
 При крупных новых изменениях добавлять решение, baseline и acceptance
 до изменения; после — command, result и limitation в VERIFICATION/ledger.

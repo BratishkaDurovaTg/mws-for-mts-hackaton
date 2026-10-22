@@ -1,0 +1,26 @@
+{
+  "status": "provisional",
+  "synthetic_only": true,
+  "higher_is_better": true,
+  "objectives": "explicit primary direction; minimize p95, process peak RAM, weight bytes",
+  "rows": [
+    {
+      "id": "prep-20261022-empty",
+      "score": 0.0,
+      "latency_p95_seconds": 7.920025382190943e-07,
+      "peak_ram_bytes": 35389440,
+      "weight_bytes": 0,
+      "pareto": true
+    },
+    {
+      "id": "prep-20261022-rules",
+      "score": 0.5909090909090909,
+      "latency_p95_seconds": 8.110980706987027e-05,
+      "peak_ram_bytes": 35553280,
+      "weight_bytes": 0,
+      "pareto": true
+    }
+  ],
+  "winner": null,
+  "limitation": "Measured Pareto set for this protocol; no universal compactness cutoff."
+}

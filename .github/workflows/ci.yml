@@ -15,11 +15,12 @@ jobs:
           version: "0.10.2"
           enable-cache: true
       - run: uv sync --locked --no-editable
-      - run: uv run --locked --no-editable ruff check src tests
-      - run: uv run --locked --no-editable ruff format --check src tests
+      - run: uv run --locked --no-editable ruff check src tests scripts
+      - run: uv run --locked --no-editable ruff format --check src tests scripts
       - run: uv run --locked --no-editable pytest -q
       - run: uv run --locked --no-editable compactfacts validate --input tests/fixtures/synthetic.jsonl
       - run: uv run --locked --no-editable compactfacts eda --input tests/fixtures/synthetic.jsonl --output artifacts/eda.json
       - run: uv run --locked --no-editable compactfacts split --input tests/fixtures/synthetic.jsonl --output artifacts/split
       - run: uv run --locked --no-editable compactfacts infer --input tests/fixtures/synthetic.jsonl --output artifacts/predictions.jsonl
       - run: uv run --locked --no-editable compactfacts evaluate --gold tests/fixtures/synthetic.jsonl --predictions artifacts/predictions.jsonl --output artifacts/metrics.json
+      - run: uv run --locked --no-editable python scripts/reproduce_preparation.py --output artifacts/ci-replay --id-prefix ci-${{ github.run_id }}

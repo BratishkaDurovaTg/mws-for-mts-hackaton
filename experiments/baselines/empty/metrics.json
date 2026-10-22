@@ -1,0 +1,147 @@
+{
+  "metric_status": "provisional",
+  "matching": "raw_exact",
+  "fact_identity": [
+    "type",
+    "value",
+    "polarity",
+    "temporality",
+    "certainty"
+  ],
+  "micro": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 28,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "per_class": {
+    "action": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "action_result": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "cause": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "date": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "error_code": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 13,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "ip": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "resource_id": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "service": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "url": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "uuid": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "version": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 3,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "macro_f1": 0.0,
+  "exact_fact_set_accuracy": 0.15,
+  "unmatched_prediction_rate": 0.0,
+  "missed_fact_rate": 1.0,
+  "schema_validity_rate": 1.0,
+  "parse_failure_rate": 0.0,
+  "technical_failure_rate": 0.0,
+  "success_rate": 1.0,
+  "repaired_rate": 0.0,
+  "retried_rate": 0.0,
+  "duplicate_fact_rate": 0.0,
+  "unsupported_evidence_rate": 0.0,
+  "hallucinated_fact_rate": null,
+  "hallucination_note": "Lexical grounding is diagnostic, not a semantic hallucination verdict.",
+  "counts": {
+    "retried": 0,
+    "ok": 20,
+    "repaired": 0,
+    "predicted_mentions": 0,
+    "duplicates": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 28,
+    "gold": 28,
+    "predicted": 0,
+    "exact": 3
+  },
+  "records": 20,
+  "error_buckets": {
+    "duplicate": 0,
+    "missing_fact": 28
+  },
+  "zero_division": 0,
+  "empty_set_policy": "both-empty successful record is exact; empty micro F1=0",
+  "primary": {
+    "name": "provisional_micro_f1",
+    "score": 0.0
+  }
+}

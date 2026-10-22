@@ -13,8 +13,8 @@
 | Data/EDA/split | 20hand-labelled synthetic tickets,28facts; templatefamily retained | PASS for detected links; bounded near scan incomplete on long record |
 | Baseline | Empty/rules previews: F1=0 /0.590909 | Synthetic mechanics only |
 | Installed package | uv sync --locked --no-editable; separate call imports site-packages | PASS |
-| Tests | .venv/bin/pytest -q without PYTHONPATH:278passed | PASS |
-| Lint/format | Ruff check/format src tests | PASS |
+| Tests | uv run --locked --no-editable pytest -q without PYTHONPATH:279passed | PASS |
+| Lint/format | Ruff check/format src tests scripts:47files | PASS |
 | Wheel | uv build --wheel | PASS; independent replay recorded below |
 | HF/SFT contracts | Fake tokenizer/model tests for local load, template/masking/EOS, budgets/retries, split/gates/hashes | PASS contracts only |
 | Real LLM baseline/tiny-overfit/SFT | No weights or ML extra installed | NOT RUN |
@@ -69,8 +69,42 @@ real support data sent to services, no paid/long GPU jobs or autoresearch run.
 
 ## Final replay and saved artifacts
 
-Updated after final clean-environment and committed-baseline replay. Measured
-artifacts belong in experiments/baselines and append-only experiments/runs.jsonl.
+Independent core-only wheel installation completed with locked hashed
+dependencies in `artifacts/final-wheel-env`. Its interpreter, without source
+path injection, executed:
+
+```bash
+artifacts/final-wheel-env/bin/python scripts/reproduce_preparation.py --output artifacts/preparation-20261022-v2 --id-prefix prep-20261022 --publish-synthetic
+```
+
+The clean source commit was `1e3b83b66f1b840ff0d22d7caf502a8e07539fd5`,
+package source SHA256 `179f4ee68e38f4f5c0fcdab3fdf3f1bc60ca72ccf351194dc4995989c6f1ec31`,
+fixture SHA256 `27fdf9619af33ff3763368c937711f2f94d3fb93937d2fdca9fff8bc2fbe1840`.
+Both run records report `git_dirty=false`. Python3.12.12, macOS26.0.1 arm64;
+seed42; batch1 serial,10passes after1warmup,200timed requests per backend.
+
+| Backend | Provisional full-fixture F1 | TP/FP/FN | Warm p50 / p95 (ms) | Process peak RAM (MiB) | Technical failures |
+| --- | --- | --- | --- | --- | --- |
+| Empty | 0 | 0/0/28 | 0.000750 / 0.000792 | 33.75 | 0/200 |
+| Rules | 0.590909 | 13/3/15 | 0.011521 / 0.081110 | 33.90625 | 0/200 |
+
+These are software regression references on all20synthetic records, not
+held-out model quality. Generated split remains15train/5dev. Weight bytes=0;
+tokens/VRAM=null. Timing is a single host observation with clock/scheduling
+noise, not a universal performance claim. Reviewed copies are in
+`experiments/baselines/`; the two append-only records in
+`experiments/runs.jsonl` preserve original paths and add `published_artifact`.
+
+The public slot suite also ran from this wheel:10records/9gold spans,
+zero technical failures. Annotation-to-span round-trip integrity=1.0 is a
+converter control, not a model score. Generic technical rules scored0 on
+the foreign slot ontology; no MWS-quality inference follows. Public texts,
+predictions and detailed public metrics remain ignored under `artifacts/`.
+
+GitHub authorization with `workflow` scope succeeded. The initial Linux
+[CI run at 5eadc08](https://github.com/BratishkaDurovaTg/mws-for-mts-hackaton/actions/runs/39848423438)
+passed. Subsequent pushes run the full installed preparation replay as well;
+their status must be read from the corresponding commit checks.
 
 ## Addendum2026-10-22
 
@@ -89,5 +123,7 @@ artifacts belong in experiments/baselines and append-only experiments/runs.jsonl
   exact entity-span gold. Synthetic fact baselines use the fact scorer;
   opt-in exact span scoring validates gold before computation and is used
   for public slot spans. No arbitrary first-occurrence span is inferred.
+- A regression test forbids entering the benchmark when span gold is invalid;
+  final local checks:279passed, Ruff check/format passed, no PYTHONPATH.
 - Five candidate checkpoints include one small encoder that still needs a
   trained extraction head. No model weights/large datasets/training jobs run.
