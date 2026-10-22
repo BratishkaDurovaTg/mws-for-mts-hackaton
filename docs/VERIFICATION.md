@@ -85,5 +85,9 @@ artifacts belong in experiments/baselines and append-only experiments/runs.jsonl
 - Exact span-copy bridge and occurrence-aware diagnostic are tested; this is
   not a trained span classifier. Four explicit experiment fields are checked
   before computation and persisted in the ledger.
+- Replay caught an invalid combination: contextual fact evidence is not
+  exact entity-span gold. Synthetic fact baselines use the fact scorer;
+  opt-in exact span scoring validates gold before computation and is used
+  for public slot spans. No arbitrary first-occurrence span is inferred.
 - Five candidate checkpoints include one small encoder that still needs a
   trained extraction head. No model weights/large datasets/training jobs run.

@@ -53,7 +53,6 @@ def main():
             "10",
             "--warmup",
             "1",
-            "--span-diagnostic",
             "--hypothesis",
             "Exact-mention software contracts remain reproducible on frozen fixtures",
             "--change",

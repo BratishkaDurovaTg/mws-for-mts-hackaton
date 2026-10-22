@@ -311,6 +311,10 @@ def execute(args):
         config = _config(args.config)
         if any(t.facts is None for t in tickets) or not tickets:
             raise ValueError("run requires nonempty labelled evaluation data")
+        if args.span_diagnostic:
+            from compactfacts.evaluation.spans import evaluate_spans
+
+            evaluate_spans(tickets, [])  # Validate precise gold spans before model computation.
         report = benchmark(args.input, args.config, args.repeats, args.warmup)
         extractor = create_extractor(config)
         predictions = predict_batch(extractor, tickets)
