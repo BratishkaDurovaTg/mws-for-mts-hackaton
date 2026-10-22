@@ -89,6 +89,7 @@ Evidence использует offsets Python Unicode code points, end exclusive,
 | A0: empty predictor | Sanity-check recall и negative examples | Явный нижний baseline |
 | A: deterministic rules | Точные IP/UUID/version/code/date/resource mentions | Не считается полноценным semantic extractor |
 | B: compact prompt-only LLM | Zero/few-shot, strict JSON, evidence | Реальные веса и качество пока не измерены |
+| Span/token classifier | Source-copy spans with a trained task head | Serious alternative; untrained encoder is not an extractor |
 | C: SFT + PEFT | Прирост official quality при заданных ресурсах | После A/B, smoke и tiny-overfit gates |
 | Hybrid | Rules помогают LLM с exact identifiers | Не включать merge автоматически: риск FP/duplicate/conflict |
 

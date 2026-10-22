@@ -1,0 +1,96 @@
+{
+  "attribution": "PolyAI Limited; Iñigo Casanueva, Ivan Vulić, Georgios P. Spithourakis, Paweł Budzianowski (2022), NLU++",
+  "canonical_bytes": 10659,
+  "canonical_file": "tickets.jsonl",
+  "canonical_sha256": "d0cc385fe3b8a6e8868568c283f330c0203d88cb2b5c9b4f82f348282aeb76a4",
+  "changes": "first rows selected; literal slots converted to canonical tickets; no relabelling",
+  "dataset": "PolyAI NLU++",
+  "exclude_from_future_training": "57ec275d8078af65b7731c2a98be812d844a6d6b:nlupp/data/banking/fold0.json",
+  "license": "CC-BY-4.0",
+  "license_sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+  "license_url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/LICENSE",
+  "limitations": [
+    "English single-turn banking, not technical support",
+    "anonymised real examples and expert-created rare cases; origins not separated per row",
+    "no negation, temporality, relation, long-context or technical-identifier gold added",
+    "qualifier defaults are transport placeholders, not annotated semantics",
+    "upstream pretraining contamination is unknown"
+  ],
+  "paper": "https://arxiv.org/abs/2204.13021",
+  "purpose": "public auxiliary diagnostic evaluation, not MWS quality estimation",
+  "record_count": 10,
+  "records": [
+    {
+      "canonical_record_sha256": "7b94b4899aa41256723cc3e093cf805fca381e1d6e16d0f861ee6054cf65dc32",
+      "source_index": 0,
+      "source_record_sha256": "a926545a97870725c7db92294bd7596f5ba5ee86573e78a63a3aba9e4d6b09ba",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:0"
+    },
+    {
+      "canonical_record_sha256": "3b15d45ba3f206d0c38e94902b66e52c6ef966c1e94909789785ef4147965234",
+      "source_index": 1,
+      "source_record_sha256": "c36bc7b2348c7648a5c20c70d80c2b5d4d08d059074aa0ae2fd5ced489aae481",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:1"
+    },
+    {
+      "canonical_record_sha256": "2196945a16903e0d5cecb72458df3ad1d3a7cc904066d26ceac7bf69ac83140e",
+      "source_index": 2,
+      "source_record_sha256": "63e211a5c4170df7fd394df750635eef39cae763f3e431ebd179e7017cccda74",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:2"
+    },
+    {
+      "canonical_record_sha256": "d1a95e7011b90bafa96b37be981fd101bbad700b2b780f4763f524b2de117302",
+      "source_index": 3,
+      "source_record_sha256": "170e8c49afb2abc810ba11cf0e525c3cdb56042aae4f84a1a83cb44b3c3147e8",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:3"
+    },
+    {
+      "canonical_record_sha256": "9e2ff6f2682eaf4b0acc64a7ab6926135fabe04f25b48cf12114907ac4b0966d",
+      "source_index": 4,
+      "source_record_sha256": "ceee6d7b68fd4149bdd41f6d2102e54a4ca4014be61ae940068901ea7d4b6707",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:4"
+    },
+    {
+      "canonical_record_sha256": "236adcb03e2b6f437cddea45c25523ea50eec1161f134e7416f2da53bca6613e",
+      "source_index": 5,
+      "source_record_sha256": "1f743932168192708fb3c37bfdd8c398b1cee5749c68caec0582f6005b728a25",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:5"
+    },
+    {
+      "canonical_record_sha256": "501820a9bc7a22f22298d82393116cc58afb8bcf2e762e05353dc82e55367667",
+      "source_index": 6,
+      "source_record_sha256": "790217f3b7e6ea2205a170868a5e340dc716a3131e01e3d919b7dfb81f26b19d",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:6"
+    },
+    {
+      "canonical_record_sha256": "7bb2f17bdee0ba8018a6cad888b4526990c968426018cfa93ac37d9a3cd88ee8",
+      "source_index": 7,
+      "source_record_sha256": "c9077de255f1c64a5624d5a29e466ba1b9f5f1365dd11b80f83c2caeee312b09",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:7"
+    },
+    {
+      "canonical_record_sha256": "4e3757d4b73eb35dec21c62a50c9ff282fc531f5111a9db14fd609a3e71bc40c",
+      "source_index": 8,
+      "source_record_sha256": "19bd64ad98c652f593f47ccef14b2f761ac06e40c60a60eb5f7064b09531c570",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:8"
+    },
+    {
+      "canonical_record_sha256": "a5b143623ddad9011228f38eaf5534260e68dd3f38001f03060664932e8f8e65",
+      "source_index": 9,
+      "source_record_sha256": "857cb2c83dbeefb2379e41fb3785887682a888857a626ffc902ce707a96f1886",
+      "ticket_id": "nlupp:nlupp/data/banking/fold0.json:9"
+    }
+  ],
+  "row_hash_serialization": "UTF-8 JSON, sorted keys, ensure_ascii=false; no final newline",
+  "ru_slice_status": "pending: bounded MASSIVE rows endpoint returned Not found",
+  "schema_version": 1,
+  "selection": "first count records by zero-based upstream array position",
+  "source_bytes": 23986,
+  "source_path": "nlupp/data/banking/fold0.json",
+  "source_record_count": 104,
+  "source_revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+  "source_sha256": "bc9544ba197f5f073d07beab056466997ad986077d1ee46b434a251568034d0c",
+  "source_url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/nlupp/data/banking/fold0.json",
+  "split": "frozen auxiliary eval; source fold is not an official fixed test split",
+  "synthetic": false
+}

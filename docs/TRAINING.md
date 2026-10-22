@@ -63,7 +63,7 @@ IDs, content/annotation hashes и `leakage_audit.passed`. Negative screen не
 доказывает полного отсутствия неизвестных зависимостей.
 
 ```bash
-uv run --locked --no-editable --extra ml compactfacts train --config configs/train_example.json --train artifacts/split/train.jsonl --dev artifacts/split/dev.jsonl --id smoke-001 --hypothesis "Проверяем finite updates на tiny subset"
+uv run --locked --no-editable --extra ml compactfacts train --config configs/train_example.json --train artifacts/split/train.jsonl --dev artifacts/split/dev.jsonl --id smoke-001 --hypothesis "Проверяем finite updates на tiny subset" --change "Reference contract only" --expected-result "Reproducible valid output" --decision-rule "KEEP only if stated gate passes"
 ```
 
 1. `smoke`: tiny subset, по умолчанию 2 optimizer steps. Проверяет finite

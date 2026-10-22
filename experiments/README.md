@@ -4,7 +4,8 @@
 and writes a manifest records a hypothesis, code revision/dirty flag, package
 source hash, data hash, config/model revision/seed, exact command, metrics,
 resources or explicit nulls, artifact paths, conclusion and KEEP/REJECT reason.
-Identifiers are unique; existing runs are never replaced. Preflight failures
+New runs require four explicit nonempty fields: Hypothesis, Change, Expected result,
+Decision rule. Identifiers are unique; existing runs are never replaced. Preflight failures
 before an experiment starts return nonzero and do not claim a training run.
 
 `KEEP` for a software baseline or training mechanics gate means retain the

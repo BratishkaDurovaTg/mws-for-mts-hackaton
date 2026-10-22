@@ -94,16 +94,21 @@ def parser():
             cmd.add_argument("--id", required=True)
             cmd.add_argument("--ledger", default="experiments/runs.jsonl")
             cmd.add_argument("--hypothesis", required=True)
+            cmd.add_argument("--change", required=True)
+            cmd.add_argument("--expected-result", required=True)
+            cmd.add_argument("--decision-rule", required=True)
             cmd.add_argument("--conclusion", required=True)
             cmd.add_argument("--decision", choices=["KEEP", "REJECT"], required=True)
             cmd.add_argument("--reason", required=True)
             cmd.add_argument("--scorer", help="reviewed local module:callable, official primary")
+            cmd.add_argument("--span-diagnostic", action="store_true")
     cmd = commands.add_parser("evaluate")
     cmd.add_argument("--gold", required=True)
     cmd.add_argument("--predictions", required=True)
     cmd.add_argument("--output", required=True)
     cmd.add_argument("--normalization", help="explicit per-type normalization JSON")
     cmd.add_argument("--scorer", help="reviewed local module:callable")
+    cmd.add_argument("--span-diagnostic", action="store_true")
     cmd.add_argument("--force", action="store_true")
     cmd = commands.add_parser("submission")
     cmd.add_argument("--predictions", required=True)
@@ -124,6 +129,9 @@ def parser():
     cmd.add_argument("--dev", required=True)
     cmd.add_argument("--id", required=True)
     cmd.add_argument("--hypothesis", required=True)
+    cmd.add_argument("--change", required=True)
+    cmd.add_argument("--expected-result", required=True)
+    cmd.add_argument("--decision-rule", required=True)
     cmd.add_argument("--ledger", default="experiments/runs.jsonl")
     cmd.add_argument("--scorer", help="reviewed local module:callable, official primary")
     return result
@@ -131,6 +139,11 @@ def parser():
 
 def execute(args):
     command = args.command
+    if command in {"run", "train"} and any(
+        not getattr(args, key).strip()
+        for key in ["hypothesis", "change", "expected_result", "decision_rule"]
+    ):
+        raise ValueError("experiment contract must be nonempty before computation")
     if hasattr(args, "output"):
         _check_output(
             args.output,
@@ -191,6 +204,9 @@ def execute(args):
                 "id": args.id,
                 **provenance(),
                 "hypothesis": args.hypothesis,
+                "change": args.change,
+                "expected_result": args.expected_result,
+                "decision_rule": args.decision_rule,
                 "base_model": config.inference.model_id,
                 "revision": config.inference.revision,
                 "data_sha256": {"train": file_hash(args.train), "dev": file_hash(args.dev)},
@@ -224,6 +240,12 @@ def execute(args):
             normalization=_json_file(args.normalization) if args.normalization else None,
             official_scorer=_plugin(args.scorer),
         )
+        if args.span_diagnostic:
+            from compactfacts.evaluation.spans import evaluate_spans
+
+            metrics["span_diagnostic"] = evaluate_spans(
+                read_tickets(args.gold), _predictions(args.predictions)
+            )
         write_json(args.output, metrics)
         return {"status": "ok", "primary": metrics["primary"]}
     if command == "submission":
@@ -293,6 +315,10 @@ def execute(args):
         extractor = create_extractor(config)
         predictions = predict_batch(extractor, tickets)
         metrics = evaluate(tickets, predictions, official_scorer=_plugin(args.scorer))
+        if args.span_diagnostic:
+            from compactfacts.evaluation.spans import evaluate_spans
+
+            metrics["span_diagnostic"] = evaluate_spans(tickets, predictions)
         output = Path(args.output)
         output.mkdir(parents=True, exist_ok=args.force)
         write_jsonl(output / "predictions.jsonl", [p.model_dump(mode="json") for p in predictions])
@@ -302,6 +328,9 @@ def execute(args):
             "id": args.id,
             **provenance(),
             "hypothesis": args.hypothesis,
+            "change": args.change,
+            "expected_result": args.expected_result,
+            "decision_rule": args.decision_rule,
             "base_model": config.model_id,
             "revision": config.revision,
             "model_weight_sha256": {

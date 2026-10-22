@@ -12,6 +12,9 @@ def append_run(path, record):
         "timestamp_utc",
         "git_commit",
         "hypothesis",
+        "change",
+        "expected_result",
+        "decision_rule",
         "data_sha256",
         "config",
         "command",
@@ -25,6 +28,11 @@ def append_run(path, record):
     }
     if not required <= record.keys() or record["decision"] not in {"KEEP", "REJECT"}:
         raise ValueError("incomplete experiment ledger record")
+    if any(
+        not isinstance(record[key], str) or not record[key].strip()
+        for key in ["hypothesis", "change", "expected_result", "decision_rule"]
+    ):
+        raise ValueError("experiment requires four nonempty hypothesis/change/expected/rule fields")
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     # One locked append, no overwrite/rewrite of previous experiments.

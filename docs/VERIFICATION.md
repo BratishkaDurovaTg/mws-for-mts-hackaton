@@ -13,7 +13,7 @@
 | Data/EDA/split | 20hand-labelled synthetic tickets,28facts; templatefamily retained | PASS for detected links; bounded near scan incomplete on long record |
 | Baseline | Empty/rules previews: F1=0 /0.590909 | Synthetic mechanics only |
 | Installed package | uv sync --locked --no-editable; separate call imports site-packages | PASS |
-| Tests | .venv/bin/pytest -q without PYTHONPATH:240passed | PASS |
+| Tests | .venv/bin/pytest -q without PYTHONPATH:278passed | PASS |
 | Lint/format | Ruff check/format src tests | PASS |
 | Wheel | uv build --wheel | PASS; independent replay recorded below |
 | HF/SFT contracts | Fake tokenizer/model tests for local load, template/masking/EOS, budgets/retries, split/gates/hashes | PASS contracts only |
@@ -71,3 +71,19 @@ real support data sent to services, no paid/long GPU jobs or autoresearch run.
 
 Updated after final clean-environment and committed-baseline replay. Measured
 artifacts belong in experiments/baselines and append-only experiments/runs.jsonl.
+
+## Addendum2026-10-22
+
+- Independent fresh wheel environment replay completed on20synthetic tickets:
+  validate/infer/evaluate/benchmark; zero technical failures; F1=.590909.
+- RELATED_TASKS/PRIOR_ART cover T-Bank, RuREBus, NEREL/RuNNE, FactRuEval,
+  conversational slots; rankings are track/version-specific. Research stopped
+  at actionable architecture/transfer hypotheses, not a model winner.
+- NLU++ pinned public slice:10records/9slots,CC-BY4.0,23,986byte source;
+  online/offline conversion bytes match. Source texts remain ignored. RU public
+  coverage, relations, negation and long-context public gold remain pending.
+- Exact span-copy bridge and occurrence-aware diagnostic are tested; this is
+  not a trained span classifier. Four explicit experiment fields are checked
+  before computation and persisted in the ledger.
+- Five candidate checkpoints include one small encoder that still needs a
+  trained extraction head. No model weights/large datasets/training jobs run.

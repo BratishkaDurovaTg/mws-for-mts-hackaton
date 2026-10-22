@@ -4,6 +4,16 @@
 tokenizer configs. Веса не скачивались, inference/training не выполнялись.
 Это начальный shortlist для контролируемого сравнения, не выбранная модель,
 не полный каталог актуальных моделей и не ограничение размера от MWS.
+
+Дополнение2026-10-22: пятый кандидат —
+[cointegrated/rubert-tiny2](https://huggingface.co/cointegrated/rubert-tiny2/blob/e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae/README.md),
+29.4M, MIT, BERT encoder3layers/hidden312/context2048, F32 checkpoint
+117,529,600bytes. Revision/config/digest в registry. Автор называет его
+Russian-focused; EN/mixed и extraction quality UNKNOWN. Это BertForPreTraining,
+**не готовый NER extractor**: span/token head требует разметки и обучения.
+FP16/BF16/PEFT/quantization и latency/RAM для этой задачи не проверены.
+Сравнить encoder/span, generative и extract-then-link до выбора final approach;
+пять кандидатов — общий бюджет, не причина запускать все без hardware gate.
 Машинно-читаемые revisions, размеры файлов и аналитические оценки находятся
 в [configs/model_candidates.json](../configs/model_candidates.json).
 

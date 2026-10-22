@@ -93,6 +93,9 @@ def test_ledger_duplicate_id_does_not_rewrite_history(tmp_path):
             "timestamp_utc",
             "git_commit",
             "hypothesis",
+            "change",
+            "expected_result",
+            "decision_rule",
             "data_sha256",
             "config",
             "command",
@@ -105,7 +108,14 @@ def test_ledger_duplicate_id_does_not_rewrite_history(tmp_path):
         ],
         None,
     )
-    record.update(id="x", decision="KEEP")
+    record.update(
+        id="x",
+        decision="KEEP",
+        hypothesis="fixture",
+        change="fixture",
+        expected_result="fixture",
+        decision_rule="fixture",
+    )
     ledger = tmp_path / "runs.jsonl"
     append_run(ledger, record)
     before = ledger.read_bytes()
@@ -125,3 +135,71 @@ def test_percentiles_and_budget_validation():
     assert percentile([1, 3], 0.95) == 2.9
     with pytest.raises(ValueError):
         benchmark(FIXTURE, "configs/rules.json", repeats=0)
+
+
+@pytest.mark.parametrize("field", ["hypothesis", "change", "expected_result", "decision_rule"])
+@pytest.mark.parametrize("invalid", [None, " "])
+def test_ledger_experiment_contract_rejects_missing_decision_before_write(tmp_path, field, invalid):
+    from compactfacts.utils.ledger import append_run
+
+    keys = [
+        "timestamp_utc",
+        "git_commit",
+        "hypothesis",
+        "change",
+        "expected_result",
+        "decision_rule",
+        "data_sha256",
+        "config",
+        "command",
+        "seed",
+        "metrics",
+        "benchmark",
+        "artifact",
+        "conclusion",
+        "reason",
+    ]
+    record = dict.fromkeys(keys, "fixture")
+    record.update(id="x", decision="KEEP")
+    record[field] = invalid
+    path = tmp_path / "runs.jsonl"
+    with pytest.raises(ValueError, match="four nonempty"):
+        append_run(path, record)
+    assert not path.exists()
+
+
+def test_blank_decision_rule_prevents_benchmark_computation(tmp_path, monkeypatch):
+    import compactfacts.cli as cli
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("benchmark must not run without an explicit decision rule")
+
+    monkeypatch.setattr(cli, "benchmark", forbidden)
+    assert (
+        main(
+            [
+                "run",
+                "--input",
+                str(FIXTURE),
+                "--output",
+                str(tmp_path / "out"),
+                "--id",
+                "x",
+                "--hypothesis",
+                "fixture",
+                "--change",
+                "fixture",
+                "--expected-result",
+                "fixture",
+                "--decision-rule",
+                " ",
+                "--conclusion",
+                "fixture",
+                "--decision",
+                "KEEP",
+                "--reason",
+                "fixture",
+            ]
+        )
+        == 2
+    )

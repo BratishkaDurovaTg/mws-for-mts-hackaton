@@ -198,5 +198,29 @@
       "structured_output_claim": "task unmeasured; explicitly disable thinking for extraction baseline",
       "card_min_transformers_version": "4.51.0"
     }
-  ]
+  ],
+  "encoder_candidate": {
+    "model_id": "cointegrated/rubert-tiny2",
+    "revision": "e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae",
+    "license": "mit",
+    "card_parameters": "29.4M",
+    "serialized_f32_elements": 29376502,
+    "serialized_i64_buffers": 2048,
+    "weight_bytes": 117529600,
+    "weight_sha256": "26ebb6db2a68593c54c74902d7a74f332da66297693f965cc9f1b0af4abf3894",
+    "architecture": [
+      "BertForPreTraining"
+    ],
+    "model_type": "bert",
+    "max_position_embeddings": 2048,
+    "hidden_size": 312,
+    "layers": 3,
+    "language_claim": "Russian-focused per author; EN/mixed support-ticket quality unmeasured",
+    "task_head_status": "base encoder; token/span head must be trained, no extraction performance claimed",
+    "peft_status": "architecture/head-specific smoke required",
+    "quantization_status": "not tested",
+    "latency": null,
+    "peak_ram_bytes": null,
+    "source": "https://huggingface.co/cointegrated/rubert-tiny2/raw/e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae/config.json"
+  }
 }

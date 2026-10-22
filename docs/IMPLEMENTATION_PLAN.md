@@ -89,6 +89,9 @@ generation validation after overfit, no automatic full training on fixtures.
 | D10 | Noneditable install + wheel replay | Host hides editable .pth; installed import verified |
 | D11 | Explicit preparation + content-based model gates | Lazy GPU timing and same-size weight identity defects |
 | D12 | Require official score direction | Unknown objective cannot be assumed maximized |
+| D13 | Frozen public auxiliary suite, separate from MWS/synthetic tests | NLU++ pinned CC-BY-4.0 slots; <=256KiB per source file; exact spans and attribution, no relabelling or automatic training mix. Acceptance: source/hash/span checks and reproducible conversion |
+| D14 | Add exact span bridge and occurrence-aware diagnostic | Generative output is not assumed superior; span detector must copy source values. Baseline: canonical set scorer ignores occurrences. Acceptance: nested/repeated-value/Unicode/out-of-bounds tests; no learned-model claim |
+| D15 | Four-field experiment contract | New runs require Hypothesis/Change/Expected result/Decision rule. Acceptance: CLI/ledger reject missing fields; previous records remain append-only |
 
 При крупных новых изменениях добавлять решение, baseline и acceptance
 до изменения; после — command, result и limitation в VERIFICATION/ledger.

@@ -104,7 +104,7 @@ qualifier heuristics. Rules не понимают все исправления,
 offsets, а не семантическую истинность.
 
 ```bash
-uv run --locked --no-editable compactfacts run --input tests/fixtures/synthetic.jsonl --config configs/rules.json --output artifacts/rules-run-001 --id rules-run-001 --hypothesis "Exact identifier rules form a reproducible software baseline" --conclusion "Synthetic fixture regression reference only" --decision KEEP --reason "Preserve measured reference"
+uv run --locked --no-editable compactfacts run --input tests/fixtures/synthetic.jsonl --config configs/rules.json --output artifacts/rules-run-001 --id rules-run-001 --hypothesis "Exact identifier rules form a reproducible software baseline" --conclusion "Synthetic fixture regression reference only" --decision KEEP --reason "Preserve measured reference" --change "Reference contract only" --expected-result "Reproducible valid output" --decision-rule "KEEP only if stated gate passes"
 ```
 
 Run сохраняет predictions/metrics/benchmark/config/provenance и append-only
@@ -154,7 +154,7 @@ Explicit HF run/training hashes local weights для согласованнос�
 
 ```bash
 uv run --locked --no-editable --extra ml compactfacts infer --input artifacts/split/dev.jsonl --config configs/hf_example.json --output artifacts/hf-predictions.jsonl
-uv run --locked --no-editable --extra ml compactfacts train --config configs/train_example.json --train artifacts/split/train.jsonl --dev artifacts/split/dev.jsonl --id smoke-001 --hypothesis "Response-only LoRA features support finite gradient updates"
+uv run --locked --no-editable --extra ml compactfacts train --config configs/train_example.json --train artifacts/split/train.jsonl --dev artifacts/split/dev.jsonl --id smoke-001 --hypothesis "Response-only LoRA features support finite gradient updates" --change "Reference contract only" --expected-result "Reproducible valid output" --decision-rule "KEEP only if stated gate passes"
 ```
 
 Отредактируйте configs под доступные local weights/hardware. Пример config
@@ -174,3 +174,29 @@ plugins; current canonical schema не навязывается официаль
 Agent skills установлены отдельно и не являются runtime dependencies:
 [аудит8skills/15поисков](docs/SKILLS_AUDIT.md). Attribution методологии EDA/
 Transformers, включая Kassis et al. (2026), добавлена в источники отчёта.
+
+## Public auxiliary suite
+
+[Related tasks](docs/RELATED_TASKS.md) and [prior art / transfer plan](docs/PRIOR_ART.md)
+separate evidence from MWS hypotheses. Pinned NLU++ slice:10records/9exactslots,
+CC-BY4.0, no public text committed. Source/license/row hashes and attribution:
+[public manifest](benchmarks/public/manifest.json). RU public slice remains pending;
+synthetic Russian tests do not replace a public benchmark.
+
+```bash
+uv run --locked --no-editable python scripts/prepare_public_benchmark.py --output artifacts/public_benchmark
+uv run --locked --no-editable compactfacts infer --input artifacts/public_benchmark/tickets.jsonl --config configs/rules.json --output artifacts/public-predictions.jsonl
+uv run --locked --no-editable compactfacts evaluate --gold artifacts/public_benchmark/tickets.jsonl --predictions artifacts/public-predictions.jsonl --span-diagnostic --output artifacts/public-metrics.json
+```
+
+This is auxiliary evaluation, not an official NLU++ leaderboard or MWS score.
+Namespaced slot labels and normalized source values are preserved separately;
+no auxiliary data is mixed into MWS automatically. The span bridge copies exact
+source values and supports occurrence-aware scoring; it is not a trained encoder.
+Budget/backlog and research stop conditions: [BACKLOG.md](docs/BACKLOG.md).
+
+Replay core validation/split/two baselines/benchmark/export/comparison together:
+
+```bash
+uv run --locked --no-editable python scripts/reproduce_preparation.py --output artifacts/preparation-replay
+```
