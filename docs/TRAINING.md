@@ -1,7 +1,8 @@
 # Local HF inference and gated LoRA training
 
-Статус: implementation path подготовлен; pretrained weights не скачаны,
-реальные generation/training/quality/resource measurements **pending**.
+Статус: реальные MWS quality measurements **pending**. Реальные local inference,
+profiling, LoRA smoke, tiny-overfit и reload проверены2026-10-22:
+`VERIFICATION.md`, `experiments/runtime_probe_20261022/`. Это synthetic mechanics.
 Unit tests с fake tokenizer проверяют masking и gates, не качество LLM.
 LoRA recipe в example — стартовая гипотеза, не оптимизированный набор параметров.
 
@@ -105,3 +106,33 @@ directory новый/пустой; существующий run не перез�
 Quantization, constrained decoding и autoresearch ожидают measured FP/BF
 baseline, official policy и justified experiment; данный runner их не включает.
 Перед долгим GPU run нужны понимание стоимости, target runtime и budget.
+
+## Reproduce the one-model runtime probe
+
+The probe configs use MPS/BF16 on the measured Mac; adapt explicitly for other
+hardware. This is an explicit approximately988MB download, not an inference side effect:
+
+```python
+import json
+from pathlib import Path
+from huggingface_hub import snapshot_download
+
+c = json.loads(Path("configs/runtime_probe.json").read_text())
+snapshot_download(c["model_id"], revision=c["revision"], local_dir=c["model_path"], token=False,
+                  allow_patterns=["config.json", "generation_config.json", "tokenizer.json",
+                                  "tokenizer_config.json", "vocab.json", "merges.txt",
+                                  "model.safetensors", "LICENSE", "README.md"])
+```
+
+With the installed ML extra and local weights:
+
+```bash
+HF_HUB_OFFLINE=1 uv run --locked --no-editable --extra ml python scripts/inspect_real_generation.py --input experiments/runtime_probe_20261022/diagnostic.jsonl --config configs/runtime_probe.json --output artifacts/runtime-raw-replay.json
+```
+
+Original baseline/training commands and four-field hypotheses are preserved in
+the ledger and published manifests. Recreate the frozen split at
+`artifacts/real-ml/split` from the committed synthetic fixture before using
+`runtime_smoke.json` then `runtime_tiny.json`; each stage needs a fresh output
+directory. Saved adapters stay ignored. Stop after mechanical gates; do not
+promote this memorized adapter as the best MWS checkpoint.

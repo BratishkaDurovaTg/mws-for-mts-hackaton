@@ -12,15 +12,15 @@ need a measured runtime defect, an exposed high-risk boundary or official contra
 - Pinned NLU++ auxiliary slice and exact span integrity machinery exist; they
   establish software behavior, not MWS quality or a trained span extractor.
 
-## Active pre-spec work
+## Current pre-spec state
 
 | Priority / status | Work | Acceptance / stop rule |
 | --- | --- | --- |
-| P0 IN PROGRESS | One real compact-model inference through existing HF → parser/schema/evidence → evaluator path | Real local immutable weights/tokenizer; representative raw outputs and failures saved; no final-model claim |
-| P0 IN PROGRESS | Real one-model profiling beside empty/rules | Saved startup/load, p50/p95, RAM, disk bytes, tokens/sec and reliable device memory or explicit null; synthetic metrics marked NOT MWS QUALITY |
-| P0 IN PROGRESS | One real LoRA smoke; optional cheap tiny overfit | Finite update/gradients, adapter save/reload and real generation; overfit only for mechanics, investigate failure before escalation |
+| P0 PASS execution | One real compact-model inference through existing HF → parser/schema/evidence → evaluator path | Qwen0.5B native BF16/MPS; raw base responses0/6schema-valid, explicitly rejected. After tiny adapter reload2/2training targets pass the complete path; no task-quality claim |
+| P0 PASS | Real one-model profiling beside empty/rules | Startup/load,p50/p95,RAM,weight bytes,tokens/sec saved;MPS snapshots only,CUDA=null;NOT MWS QUALITY |
+| P0 PASS | Real LoRA smoke, bounded tiny overfit and adapter reload | 2finite updates;100-step tiny loss .606198→.000912;2/2memorized targets exact after separate reload. No full SFT |
 | P0 READY, official execution pending | Day-1 schema/scorer adaptation | `OFFICIAL_ADAPTATION.md`: first30m/2h/4h/8h, exact-source capture, scorer references and frozen validation |
-| P1 BOUNDED | Relevant industrial prior art: MTS/MWS, telecom/cloud/support first | At most 3 actionable primary sources this iteration; classify data/code/lesson/marketing; stop when no engineering choice changes |
+| P1 DONE | Relevant industrial prior art: MTS/MWS, telecom/cloud/support first | D18:3new primary industrial lessons, explicit limits; no data/code availability inferred; research stopped |
 | P1 PRESERVE OPTIONS | Generative, encoder/span, extract-then-classify/link, rules+ML | Keep comparison plan; build only the task-fitting options after official data/scorer; no parallel framework now |
 | P1 AS EXPOSED | Fix real runtime defects | Small measured correction plus targeted regression only where justified |
 | P2 OPTIONAL | Small Russian public evaluation slice or diagnostic cases | Only if it answers a concrete gap; license/provenance/gold review; no automatic training mix |
@@ -28,6 +28,8 @@ need a measured runtime defect, an exposed high-risk boundary or official contra
 
 After real load/inference/profiling/LoRA smoke (and optional tiny overfit), stop
 generic pre-spec optimization. The runtime probe is not the final MWS model.
+This stop condition is met. Remaining pre-spec P0: none; official execution
+awaits original materials. Evidence: `VERIFICATION.md`, runtime publication manifest.
 
 ## Blocked until official task and validation gates
 

@@ -1,0 +1,85 @@
+{
+  "metric_status": "provisional",
+  "matching": "raw_exact",
+  "fact_identity": [
+    "type",
+    "value",
+    "polarity",
+    "temporality",
+    "certainty"
+  ],
+  "micro": {
+    "tp": 5,
+    "fp": 2,
+    "fn": 3,
+    "precision": 0.7142857142857143,
+    "recall": 0.625,
+    "f1": 0.6666666666666666
+  },
+  "per_class": {
+    "error_code": {
+      "tp": 3,
+      "fp": 2,
+      "fn": 2,
+      "precision": 0.6,
+      "recall": 0.6,
+      "f1": 0.6
+    },
+    "uuid": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "version": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666
+    }
+  },
+  "macro_f1": 0.7555555555555555,
+  "exact_fact_set_accuracy": 0.5,
+  "unmatched_prediction_rate": 0.2857142857142857,
+  "missed_fact_rate": 0.375,
+  "schema_validity_rate": 1.0,
+  "parse_failure_rate": 0.0,
+  "technical_failure_rate": 0.0,
+  "success_rate": 1.0,
+  "repaired_rate": 0.0,
+  "retried_rate": 0.0,
+  "duplicate_fact_rate": 0.0,
+  "unsupported_evidence_rate": 0.0,
+  "hallucinated_fact_rate": null,
+  "hallucination_note": "Lexical grounding is diagnostic, not a semantic hallucination verdict.",
+  "counts": {
+    "retried": 0,
+    "ok": 6,
+    "repaired": 0,
+    "predicted_mentions": 7,
+    "duplicates": 0,
+    "tp": 5,
+    "fp": 2,
+    "fn": 3,
+    "gold": 8,
+    "predicted": 7,
+    "exact": 3,
+    "audited_facts": 7
+  },
+  "records": 6,
+  "error_buckets": {
+    "duplicate": 0,
+    "missing_fact": 3,
+    "wrong_qualifier": 2
+  },
+  "zero_division": 0,
+  "empty_set_policy": "both-empty successful record is exact; empty micro F1=0",
+  "primary": {
+    "name": "provisional_micro_f1",
+    "score": 0.6666666666666666
+  }
+}

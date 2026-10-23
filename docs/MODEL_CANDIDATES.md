@@ -12,7 +12,8 @@ revision `2fc06364715b967f1860aea9cf38778875588b17`:1746942600bytes,
 image-text-to-text, multimodal loader. The older native text-only probe
 reduces acquisition/runtime cost for a mechanical check; it is not a final
 model comparison. Existing locked ML extra installs unchanged on M4/16GiB;
-MPS available, CUDA unavailable. Actual quality/compatibility remains to be measured.
+MPS available, CUDA unavailable. Native BF16 inference and LoRA mechanics now
+verified; base probe failed schema on6/6cases. MWS quality remains UNKNOWN.
 
 Дополнение2026-10-22: пятый кандидат —
 [cointegrated/rubert-tiny2](https://huggingface.co/cointegrated/rubert-tiny2/blob/e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae/README.md),

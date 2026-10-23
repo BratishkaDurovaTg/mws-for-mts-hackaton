@@ -1,0 +1,6 @@
+{"ticket_id": "syn-empty", "status": "error", "facts": [], "error_code": "invalid_schema", "repaired": false, "generated_tokens": 148, "attempts": 1}
+{"ticket_id": "syn-http", "status": "error", "facts": [], "error_code": "invalid_schema", "repaired": false, "generated_tokens": 106, "attempts": 1}
+{"ticket_id": "syn-version", "status": "error", "facts": [], "error_code": "invalid_schema", "repaired": false, "generated_tokens": 112, "attempts": 1}
+{"ticket_id": "syn-uuid", "status": "error", "facts": [], "error_code": "invalid_schema", "repaired": false, "generated_tokens": 217, "attempts": 1}
+{"ticket_id": "syn-negation", "status": "error", "facts": [], "error_code": "invalid_schema", "repaired": false, "generated_tokens": 104, "attempts": 1}
+{"ticket_id": "syn-history", "status": "error", "facts": [], "error_code": "invalid_schema", "repaired": false, "generated_tokens": 176, "attempts": 1}

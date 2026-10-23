@@ -1,0 +1,130 @@
+{
+  "load_seconds": 11.685096959001385,
+  "parameters": 494032768,
+  "dtype": "torch.bfloat16",
+  "device": "mps:0",
+  "mps_current_allocated_bytes": 1006776576,
+  "mps_driver_allocated_bytes": 1090994176,
+  "lengths": [
+    {
+      "id": "syn-empty",
+      "prompt_tokens": 478,
+      "sequence_tokens": 484,
+      "supervised_tokens": 6
+    },
+    {
+      "id": "syn-thanks",
+      "prompt_tokens": 486,
+      "sequence_tokens": 492,
+      "supervised_tokens": 6
+    },
+    {
+      "id": "syn-http",
+      "prompt_tokens": 490,
+      "sequence_tokens": 551,
+      "supervised_tokens": 61
+    },
+    {
+      "id": "syn-endpoint",
+      "prompt_tokens": 496,
+      "sequence_tokens": 622,
+      "supervised_tokens": 126
+    },
+    {
+      "id": "syn-version",
+      "prompt_tokens": 507,
+      "sequence_tokens": 693,
+      "supervised_tokens": 186
+    },
+    {
+      "id": "syn-uuid",
+      "prompt_tokens": 520,
+      "sequence_tokens": 641,
+      "supervised_tokens": 121
+    },
+    {
+      "id": "syn-ip",
+      "prompt_tokens": 502,
+      "sequence_tokens": 580,
+      "supervised_tokens": 78
+    },
+    {
+      "id": "syn-resource",
+      "prompt_tokens": 497,
+      "sequence_tokens": 614,
+      "supervised_tokens": 117
+    },
+    {
+      "id": "syn-date",
+      "prompt_tokens": 502,
+      "sequence_tokens": 576,
+      "supervised_tokens": 74
+    },
+    {
+      "id": "syn-typo",
+      "prompt_tokens": 501,
+      "sequence_tokens": 617,
+      "supervised_tokens": 116
+    },
+    {
+      "id": "syn-negation",
+      "prompt_tokens": 492,
+      "sequence_tokens": 557,
+      "supervised_tokens": 65
+    },
+    {
+      "id": "syn-correction",
+      "prompt_tokens": 497,
+      "sequence_tokens": 627,
+      "supervised_tokens": 130
+    },
+    {
+      "id": "syn-history",
+      "prompt_tokens": 529,
+      "sequence_tokens": 663,
+      "supervised_tokens": 134
+    },
+    {
+      "id": "syn-speaker",
+      "prompt_tokens": 556,
+      "sequence_tokens": 673,
+      "supervised_tokens": 117
+    },
+    {
+      "id": "syn-action",
+      "prompt_tokens": 489,
+      "sequence_tokens": 606,
+      "supervised_tokens": 117
+    },
+    {
+      "id": "syn-assumption",
+      "prompt_tokens": 507,
+      "sequence_tokens": 626,
+      "supervised_tokens": 119
+    },
+    {
+      "id": "syn-long",
+      "prompt_tokens": 2490,
+      "sequence_tokens": 2602,
+      "supervised_tokens": 112
+    },
+    {
+      "id": "syn-missing",
+      "prompt_tokens": 491,
+      "sequence_tokens": 497,
+      "supervised_tokens": 6
+    },
+    {
+      "id": "syn-http-copy",
+      "prompt_tokens": 491,
+      "sequence_tokens": 552,
+      "supervised_tokens": 61
+    },
+    {
+      "id": "syn-http-near",
+      "prompt_tokens": 509,
+      "sequence_tokens": 570,
+      "supervised_tokens": 61
+    }
+  ]
+}

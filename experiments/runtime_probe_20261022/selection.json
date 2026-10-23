@@ -1,0 +1,18 @@
+{
+  "diagnostic_ids": [
+    "syn-empty",
+    "syn-history",
+    "syn-http",
+    "syn-negation",
+    "syn-uuid",
+    "syn-version"
+  ],
+  "scope": "six existing synthetic fixtures, mechanical diagnostic only; not independent MWS validation",
+  "selection_before_generation": true,
+  "seed": 42,
+  "max_new_tokens": 512,
+  "planned_benchmark_repeats": 1,
+  "planned_warmup": 0,
+  "planned_smoke_optimizer_steps": 2,
+  "no_full_training": true
+}

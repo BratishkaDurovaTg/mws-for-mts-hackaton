@@ -1,0 +1,290 @@
+{
+  "schema_version": "compactfacts.training.v1",
+  "status": "passed",
+  "stage": "smoke",
+  "fingerprint": "fe34bd0083dfed20a8b40cd7cc0b90d36e2bd28ceb087b19adc3e7a888b75d2e",
+  "gates": {
+    "smoke": {
+      "passed": true,
+      "finite_updates": true,
+      "gradients_finite": true,
+      "loss_log_count": 2,
+      "initial_loss": 0.6061983108520508,
+      "final_loss": 0.53996741771698,
+      "loss_decreased": true,
+      "generation_exact": false,
+      "generation_checks": [
+        {
+          "example_index": 0,
+          "status": "error",
+          "error_code": "invalid_json",
+          "generated_tokens": 87,
+          "exact_fact_set": false
+        },
+        {
+          "example_index": 1,
+          "status": "error",
+          "error_code": "output_limit",
+          "generated_tokens": 512,
+          "exact_fact_set": false
+        }
+      ],
+      "smoke_note": "smoke generation diagnostic; exact generation required by tiny_overfit"
+    }
+  },
+  "timestamp_utc": "2026-10-22T21:04:47.160395+00:00",
+  "config": {
+    "inference": {
+      "backend": "hf",
+      "model_path": "models/Qwen2.5-0.5B-Instruct/7ae557604adf67be50417f59c2c2f167def9a775",
+      "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "adapter_path": null,
+      "device": "mps",
+      "dtype": "bfloat16",
+      "max_input_tokens": 4096,
+      "max_new_tokens": 512,
+      "max_input_chars": 100000,
+      "seed": 42,
+      "allowed_types": null,
+      "parser_mode": "strict",
+      "max_retries": 0,
+      "enable_thinking": false,
+      "require_evidence": true
+    },
+    "stage": "smoke",
+    "output_dir": "artifacts/real-ml/peft-smoke",
+    "split_manifest_path": "artifacts/real-ml/split/manifest.json",
+    "prior_gate_manifest": null,
+    "baseline_run_path": null,
+    "data_origin": "synthetic",
+    "max_length": 4096,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0,
+    "optimizer": "adamw_torch",
+    "scheduler": "linear",
+    "warmup_steps": 0,
+    "max_grad_norm": 1.0,
+    "lora_rank": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "gradient_checkpointing": true,
+    "tiny_examples": 2,
+    "smoke_steps": 2,
+    "tiny_steps": 100,
+    "full_steps": 400,
+    "save_steps": 50,
+    "minimum_loss_ratio": 0.95
+  },
+  "train_hash": "f80e4fe18c102f4a79a8a79919a93b1c5e120d08182fc23294349eafd8d1bc63",
+  "dev_hash": "50f4fa9ca77cb91470fdbd1e98e8fc90f0a0d1bb8d4abd3683ccf42e5100c85b",
+  "split_manifest_hash": "3544e0d7262918069ad927333c196548542c38ed900c9b84c3915a982341d84d",
+  "split_manifest_file_hash": "3bcf9f0140a8d75683c35ff578eefd7a7a9112ba2bbac6331c6bc94f3275ac9b",
+  "baseline_evidence": null,
+  "weight_hash_seconds": 0.38446799998928327,
+  "git": {
+    "commit": "d0fe44e20f5b78ccb8e44029b80001f985b59391",
+    "dirty": true,
+    "package_source_sha256": "179f4ee68e38f4f5c0fcdab3fdf3f1bc60ca72ccf351194dc4995989c6f1ec31"
+  },
+  "environment": {
+    "python": "3.12.12",
+    "platform": "Darwin",
+    "machine": "arm64",
+    "packages": {
+      "torch": "2.14.1",
+      "transformers": "5.20.2",
+      "peft": "0.21.2",
+      "accelerate": "1.15.0",
+      "safetensors": "0.8.0"
+    },
+    "device": "mps",
+    "cuda_version": null,
+    "cuda_device": null,
+    "world_size": 1
+  },
+  "model_snapshot": {
+    "small_file_sha256": {
+      "config.json": "18e18afcaccafade98daf13a54092927904649e1dd4eba8299ab717d5d94ff45",
+      "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+      "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+      "generation_config.json": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6"
+    },
+    "weight_files": [
+      {
+        "name": "model.safetensors",
+        "bytes": 988097824
+      }
+    ],
+    "weight_bytes": 988097824,
+    "weight_content_hashes_verified": true,
+    "provenance_note": "local content hashes computed; model_id/revision not verified against Hub digests",
+    "weight_sha256": {
+      "model.safetensors": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe"
+    },
+    "weight_hash_verification_scope": "local content hashing only; not compared with official Hub digests"
+  },
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "quantization": null,
+  "precision": "bfloat16",
+  "seed": 42,
+  "effective_batch_size": 1,
+  "effective_batch_note": "single process; final partial accumulation may be smaller",
+  "trainable_parameters": 540672,
+  "optimizer_steps_planned": 2,
+  "best_checkpoint": null,
+  "checkpoint_note": "final adapter is a candidate; no official-score checkpoint selection",
+  "command": [
+    "compactfacts",
+    "train",
+    "--config",
+    "configs/runtime_smoke.json",
+    "--train",
+    "artifacts/real-ml/split/train.jsonl",
+    "--dev",
+    "artifacts/real-ml/split/dev.jsonl",
+    "--id",
+    "runtime-20261022-peft-smoke",
+    "--hypothesis",
+    "The locked Transformers and PEFT stack performs finite real LoRA updates on local MPS",
+    "--change",
+    "Contract-only training checks to two real optimizer steps on the pinned pretrained base",
+    "--expected-result",
+    "Finite losses and gradients, saved safetensors adapter and actual generation",
+    "--decision-rule",
+    "KEEP mechanics only if finite updates succeed; separately verify adapter reload; never infer MWS quality"
+  ],
+  "privacy": "no source messages, targets or generated fact values in this manifest",
+  "initial_loss": 0.6061983108520508,
+  "final_loss": 0.53996741771698,
+  "optimizer_steps": 2,
+  "epochs": 1.0,
+  "training_log": [
+    {
+      "loss": 0.5007603168487549,
+      "grad_norm": 2.246080160140991,
+      "learning_rate": 0.0002,
+      "epoch": 0.5,
+      "step": 1
+    },
+    {
+      "loss": 0.6839444637298584,
+      "grad_norm": 2.3917758464813232,
+      "learning_rate": 0.0001,
+      "epoch": 1.0,
+      "step": 2
+    },
+    {
+      "train_runtime": 3.77,
+      "train_samples_per_second": 0.53,
+      "train_steps_per_second": 0.53,
+      "total_flos": 2649579491328.0,
+      "train_loss": 0.5923523902893066,
+      "epoch": 1.0,
+      "step": 2
+    },
+    {
+      "eval_loss": 0.53996741771698,
+      "eval_model_preparation_time": 0.0029,
+      "eval_runtime": 0.6976,
+      "eval_samples_per_second": 2.867,
+      "eval_steps_per_second": 2.867,
+      "epoch": 1.0,
+      "step": 2
+    }
+  ],
+  "validation_metrics": {
+    "metric_status": "provisional",
+    "matching": "raw_exact",
+    "fact_identity": [
+      "type",
+      "value",
+      "polarity",
+      "temporality",
+      "certainty"
+    ],
+    "micro": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "per_class": {
+      "action": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "action_result": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "cause": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "macro_f1": 0.0,
+    "exact_fact_set_accuracy": 0.0,
+    "unmatched_prediction_rate": 0.0,
+    "missed_fact_rate": 1.0,
+    "schema_validity_rate": 0.0,
+    "parse_failure_rate": 1.0,
+    "technical_failure_rate": 1.0,
+    "success_rate": 0.0,
+    "repaired_rate": 0.0,
+    "retried_rate": 0.0,
+    "duplicate_fact_rate": 0.0,
+    "unsupported_evidence_rate": 0.0,
+    "hallucinated_fact_rate": null,
+    "hallucination_note": "Lexical grounding is diagnostic, not a semantic hallucination verdict.",
+    "counts": {
+      "retried": 0,
+      "technical_failures": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4,
+      "gold": 4,
+      "predicted": 0
+    },
+    "records": 2,
+    "error_buckets": {
+      "invalid_json": 1,
+      "missing_fact": 4,
+      "output_limit": 1
+    },
+    "zero_division": 0,
+    "empty_set_policy": "both-empty successful record is exact; empty micro F1=0",
+    "primary": {
+      "name": "provisional_micro_f1",
+      "score": 0.0
+    }
+  },
+  "validation_scope": "tiny_training_subset",
+  "adapter_path": "artifacts/real-ml/peft-smoke/adapter",
+  "adapter_bytes": 13606698,
+  "conclusion": "mechanics gate only; not a quality improvement claim",
+  "duration_seconds": 16.34640662498714,
+  "cuda_peak_allocated_bytes": null,
+  "cuda_peak_scope": "process high-water includes loading and any earlier CUDA work in the same process"
+}

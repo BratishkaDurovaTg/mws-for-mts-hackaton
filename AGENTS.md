@@ -4,6 +4,10 @@ Read docs/PRE_IMPLEMENTATION_REPORT.md, docs/IMPLEMENTATION_PLAN.md,
 docs/VERIFICATION.md and experiments/README.md before substantial changes.
 Official MWS specification/dataset/scorer outrank all internal notes.
 
+Pre-spec infrastructure is frozen. Validate one real model/LoRA mechanical
+slice and Day-1 adaptation readiness, then stop generic preparation. Full SFT,
+transfer, model tournaments, quantization and autoresearch wait for official gates.
+
 - Keep CONFIRMED, INFERRED and UNKNOWN separate. All current schema/metrics
   and synthetic fact types are provisional. Never invent official limits.
 - Before a substantial edit: inspect state, record hypothesis, baseline and

@@ -5,10 +5,12 @@
 локальный HF backend и поэтапный LoRA runner.
 
 **Официальные dataset, schema, scorer и hardware constraints ещё не получены.**
-Внутренние форматы и метрики provisional. Модель не выбрана и не скачана.
+Внутренние форматы и метрики provisional. Финальная модель не выбрана.
 Синтетические software fixtures не являются прогнозом leaderboard quality.
-Реальные LLM inference/training ещё не проверены запуском; unit tests их
-контрактов используют небольшие doubles.
+Один реальный Qwen0.5B проверен локально: inference/profiling, LoRA smoke,
+tiny-overfit и reload. Базовый checkpoint дал0/6schema-valid ответов;
+tiny-overfit воспроизвёл2тренировочных примера. Это проверка механики.
+Результаты и ограничения: [VERIFICATION](docs/VERIFICATION.md#real-runtime-results2026-10-22).
 
 [Контекст и источники](docs/PRE_IMPLEMENTATION_REPORT.md) ·
 [план и решения](docs/IMPLEMENTATION_PLAN.md) ·
@@ -150,7 +152,8 @@ license/runtime/budget check. Пять checkpoint, включая encoder, — �
 uv sync --locked --no-editable --extra ml
 ```
 
-Это устанавливает крупные ML-библиотеки; команда при подготовке не выполнялась.
+Это устанавливает ML-библиотеки; runtime probe проверен с существующим lock
+без обновлений. Core CI по-прежнему не требует ML extra или весов.
 Веса выбранной immutable revision скачайте отдельно в `models/` после
 проверки ресурсов. Inference сам ничего не скачивает: local files only,
 native code, safetensors; обязательных external APIs нет.
@@ -166,7 +169,7 @@ uv run --locked --no-editable --extra ml compactfacts train --config configs/tra
 Отредактируйте configs под доступные local weights/hardware. Пример config
 не означает выбора победителя. [Training runbook](docs/TRAINING.md):
 smoke→tiny overfit→explicit full, target masking/EOS, frozen baseline gates.
-Full training на synthetic fixtures запрещён. Реальный прирост пока не измерен,
+Full training на synthetic fixtures запрещён. Прирост на реальной задаче не измерен,
 best model/checkpoint не выбран.
 
 ## Официальная адаптация

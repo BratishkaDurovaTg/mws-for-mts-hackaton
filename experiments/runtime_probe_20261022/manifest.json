@@ -1,0 +1,145 @@
+{
+  "synthetic_only": true,
+  "publication": "Reviewed synthetic fixtures and outputs only; no public/customer data, weights or optimizer checkpoints",
+  "source_fixture": "tests/fixtures/synthetic.jsonl",
+  "source_fixture_sha256": "27fdf9619af33ff3763368c937711f2f94d3fb93937d2fdca9fff8bc2fbe1840",
+  "original_artifacts": "artifacts/real-ml",
+  "run_copies": {
+    "runtime-20261022-qwen05": "qwen-baseline/run.json",
+    "runtime-20261022-empty": "empty-baseline/run.json",
+    "runtime-20261022-rules": "rules-baseline/run.json",
+    "runtime-20261022-peft-smoke": "peft-smoke/training_manifest.json",
+    "runtime-20261022-peft-tiny": "peft-tiny/training_manifest.json"
+  },
+  "provenance": "Original commit/dirty flags,commands,hashes and artifact paths are preserved; this manifest locates review copies",
+  "files": {
+    "acquisition.json": {
+      "bytes": 1659,
+      "sha256": "bb3acb3a9d16410b5ef657fda86171163f973b34f74d6839a2d903f971f337cf"
+    },
+    "diagnostic.jsonl": {
+      "bytes": 3724,
+      "sha256": "c8c3152fd4920101b29c57a81729180782d35d88a5e90e20465dfebd50c40fa1"
+    },
+    "empty-baseline/benchmark.json": {
+      "bytes": 2450,
+      "sha256": "ad5adad5703e6e43c6502cb2bf875000d81fbf7ac782eb80fee974974f6d460b"
+    },
+    "empty-baseline/metrics.json": {
+      "bytes": 1650,
+      "sha256": "7665d321e46439134d836f7230aea8be6f87d0aacf2b2fa9eb6afa433004abcf"
+    },
+    "empty-baseline/predictions.jsonl": {
+      "bytes": 821,
+      "sha256": "a750fe8322a217acec4df2442fb20996cdf9eee4da1c7f73ae0ec0cf8515d312"
+    },
+    "empty-baseline/run.json": {
+      "bytes": 7112,
+      "sha256": "c8b483492b8a6d2bd665e7bee450a0d98d4e85a61b273365a8fb155c1860d187"
+    },
+    "empty-config.json": {
+      "bytes": 377,
+      "sha256": "06e49566694feff028f46039d8b3291ab7e8ceef8929aacf384019aa8354b555"
+    },
+    "hardware.json": {
+      "bytes": 434,
+      "sha256": "f6156b387ceb124697fa759cd1570d9f046fd59027abeaeca7b599a87c19257c"
+    },
+    "observations.json": {
+      "bytes": 1447,
+      "sha256": "b0253f07614eaa2d1143a8cca52188cc5ead95da48725bc940b4dbeedfb1b63d"
+    },
+    "peft-smoke/adapter_files.json": {
+      "bytes": 794,
+      "sha256": "84fd1aab6e28605522d5c21dd6cc50c54ecee45f5d47035d6107f246ab3ec66d"
+    },
+    "peft-smoke/training_manifest.json": {
+      "bytes": 8744,
+      "sha256": "29a3c234afe6344ead91868cc03eae578e828732b731867209784552627539a5"
+    },
+    "peft-tiny/adapter_files.json": {
+      "bytes": 794,
+      "sha256": "f5d83753094fa75f43b80c788eaf8603715d9c908eaeee42bd2d2be9f739703b"
+    },
+    "peft-tiny/training_manifest.json": {
+      "bytes": 25777,
+      "sha256": "dce726b22e76c07ff024954266a4eeeb3a590fe066d936bf5fb3f9de3cd37e10"
+    },
+    "preflight.json": {
+      "bytes": 2785,
+      "sha256": "2eee41605389ee3bb333ed71abcb516e451916b29093522e3a4a59ce4edb8167"
+    },
+    "qwen-baseline/benchmark.json": {
+      "bytes": 2579,
+      "sha256": "e32053c3001eae54800c17ab987fbe288b05cc2d92ff8572bc059c5b721650ed"
+    },
+    "qwen-baseline/metrics.json": {
+      "bytes": 1570,
+      "sha256": "13d504fbb89396c2ee36dac2a9763f636a7a6e2a4b1894e8ba26b41194f06cef"
+    },
+    "qwen-baseline/predictions.jsonl": {
+      "bytes": 905,
+      "sha256": "62858c696f233a181a30dace497c188df2ed7bedef3175ff965b61753f0de72c"
+    },
+    "qwen-baseline/run.json": {
+      "bytes": 7768,
+      "sha256": "265b535a9d8a169ad10c92af793550b116cbcd344361b37a00992395eb154065"
+    },
+    "real-generations.json": {
+      "bytes": 32520,
+      "sha256": "f9ba5b6dafec348670142d42aeeb145758a67c3419c26681e8b725adaf31a4bf"
+    },
+    "reload-config.json": {
+      "bytes": 537,
+      "sha256": "b2732309008022f2bfeeda32ba456eebca61576265f77104b2aadb9a0c6c0a4d"
+    },
+    "reloaded-generations.json": {
+      "bytes": 32737,
+      "sha256": "e81f9b72883e005011d10b01c5d46254e40cbd86075c3037ec50cd17f5953b74"
+    },
+    "rules-baseline/benchmark.json": {
+      "bytes": 2450,
+      "sha256": "cade37b06b259baaf1ac946d67864ac91ddfee7cae00f87415dd1ba8a4927880"
+    },
+    "rules-baseline/metrics.json": {
+      "bytes": 1778,
+      "sha256": "d3a70353e8e34fa3de88acf058891e54ed52a8776f8db7186e842d86783db358"
+    },
+    "rules-baseline/predictions.jsonl": {
+      "bytes": 2204,
+      "sha256": "9efb784a6ee5202bb63da6eaf3ed546f25c79b3a5f4411326fafc566f5a2b767"
+    },
+    "rules-baseline/run.json": {
+      "bytes": 7244,
+      "sha256": "2bb4df4a86bd659b05765a5c63c837a9506697f1a611d0aae95e9ed07ad83d37"
+    },
+    "rules-config.json": {
+      "bytes": 377,
+      "sha256": "6392252bc359f96055905e28e875110a7b7214558b44b69936402e959beba295"
+    },
+    "selection.json": {
+      "bytes": 443,
+      "sha256": "f938d3ef82da0a53ec7fa46f4f3197fa5b5cfa2c199146600598f3c79aeb5776"
+    },
+    "split_manifest.json": {
+      "bytes": 5154,
+      "sha256": "3bcf9f0140a8d75683c35ff578eefd7a7a9112ba2bbac6331c6bc94f3275ac9b"
+    },
+    "summary.json": {
+      "bytes": 3999,
+      "sha256": "245717baa4c6bf7df20dab349577d9f5bedb1241cf70591c890bc3586a9dd41b"
+    },
+    "tiny-reload-config.json": {
+      "bytes": 536,
+      "sha256": "266156ed58d9c879a44c28e8d80e31e7ddc7d4371a1b63db255998f21e865424"
+    },
+    "tiny-reloaded-generations.json": {
+      "bytes": 15917,
+      "sha256": "5c17abff2f95317aaa66d672fda27d11a397ccf8fd9fc2ddb470efb65a1c2061"
+    },
+    "tiny-training-diagnostic.jsonl": {
+      "bytes": 1639,
+      "sha256": "8920c1eedaf975f36cb87b6a02f6f70044142e61946eb6f8df6429006d5d571a"
+    }
+  }
+}

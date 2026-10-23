@@ -1,0 +1,18 @@
+{
+  "backend": "empty",
+  "model_path": null,
+  "model_id": null,
+  "revision": null,
+  "adapter_path": null,
+  "device": "mps",
+  "dtype": "bfloat16",
+  "max_input_tokens": 4096,
+  "max_new_tokens": 512,
+  "max_input_chars": 100000,
+  "seed": 42,
+  "allowed_types": null,
+  "parser_mode": "strict",
+  "max_retries": 0,
+  "enable_thinking": false,
+  "require_evidence": true
+}

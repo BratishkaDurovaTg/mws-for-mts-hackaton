@@ -1,0 +1,18 @@
+{
+  "backend": "hf",
+  "model_path": "models/Qwen2.5-0.5B-Instruct/7ae557604adf67be50417f59c2c2f167def9a775",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "adapter_path": "artifacts/real-ml/peft-tiny/adapter",
+  "device": "mps",
+  "dtype": "bfloat16",
+  "max_input_tokens": 4096,
+  "max_new_tokens": 512,
+  "max_input_chars": 100000,
+  "seed": 42,
+  "allowed_types": null,
+  "parser_mode": "strict",
+  "max_retries": 0,
+  "enable_thinking": false,
+  "require_evidence": true
+}

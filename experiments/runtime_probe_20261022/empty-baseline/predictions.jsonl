@@ -1,0 +1,6 @@
+{"ticket_id": "syn-empty", "status": "ok", "facts": [], "error_code": null, "repaired": false, "generated_tokens": null, "attempts": 1}
+{"ticket_id": "syn-http", "status": "ok", "facts": [], "error_code": null, "repaired": false, "generated_tokens": null, "attempts": 1}
+{"ticket_id": "syn-version", "status": "ok", "facts": [], "error_code": null, "repaired": false, "generated_tokens": null, "attempts": 1}
+{"ticket_id": "syn-uuid", "status": "ok", "facts": [], "error_code": null, "repaired": false, "generated_tokens": null, "attempts": 1}
+{"ticket_id": "syn-negation", "status": "ok", "facts": [], "error_code": null, "repaired": false, "generated_tokens": null, "attempts": 1}
+{"ticket_id": "syn-history", "status": "ok", "facts": [], "error_code": null, "repaired": false, "generated_tokens": null, "attempts": 1}

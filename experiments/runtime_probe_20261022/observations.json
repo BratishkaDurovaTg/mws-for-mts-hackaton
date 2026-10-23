@@ -1,0 +1,43 @@
+{
+  "synthetic_only": true,
+  "scope": "manual inspection of six real outputs; NOT MWS QUALITY",
+  "raw_json_syntax_valid": 6,
+  "records": 6,
+  "schema_valid": 0,
+  "accepted_facts": 0,
+  "accepted_goodput": 0,
+  "interpretation": "parser_failure_rate includes schema failure; FP=0 and unsupported_evidence_rate=0 after rejection do not establish absence of hallucination",
+  "representative_failures": [
+    {
+      "id": "syn-empty",
+      "observation": "invented message-received facts and unallowed neutral polarity despite empty source"
+    },
+    {
+      "id": "syn-http",
+      "observation": "whole sentence as value, invented evidence fields and hypothetical certainty"
+    },
+    {
+      "id": "syn-version",
+      "observation": "unsupported user-not-found explanation of 404, omitted old version"
+    },
+    {
+      "id": "syn-uuid",
+      "observation": "UUID copied exactly in raw text, but nested Fact objects replace required evidence structure"
+    },
+    {
+      "id": "syn-negation",
+      "observation": "negative/hypothesized qualifiers violate schema enums"
+    },
+    {
+      "id": "syn-history",
+      "observation": "past error marked current; invalid evidence objects"
+    }
+  ],
+  "decision": "REJECT this base/prompt as a working extractor; KEEP execution/resource evidence only",
+  "no_claims": [
+    "MWS quality",
+    "final model ranking",
+    "semantic hallucination rate",
+    "held-out task performance"
+  ]
+}

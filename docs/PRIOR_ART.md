@@ -75,11 +75,11 @@ Multi-task loss, retrieval, augmentation and quantization are separate ablations
 | Build regardless? |Adapters/evaluator/EDA/tests/profile/ledger;already working |
 | Wait for official data? |Label policy,final architecture,training/transfer/scorer decisions |
 | Top3architectures? |Generative,span,extract-then-link/hybrid |
-| Candidate models? |4controlled compact LLMs+1small RU encoder,metadata only |
-| Baseline? |Empty and rules;synthetic F1=0/.591,not model-quality evidence |
+| Candidate models? |4compact LLMs+1small RU encoder;one Qwen0.5B runtime probe validated,not final selection |
+| Baseline? |Empty/rules references;real Qwen probe0/6schema-valid,rejected;no MWS quality evidence |
 | Improvement measurement? |Official frozen validation+quality/resource protocol |
 | Highest risk? |Assuming auxiliary/foreign extraction matches MWS semantics |
-| Next empirical test? |Pinned public adapter/occurrence-span integrity;then local model baseline after budget/data gates |
+| Next empirical test? |Pre-spec real inference/profile/LoRA/tiny mechanics complete;ingest official materials,then official baselines |
 
 Stop broad research. Evidence/history lives here; next work follows BACKLOG.md.
 

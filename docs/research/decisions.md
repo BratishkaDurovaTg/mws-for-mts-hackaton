@@ -1,6 +1,6 @@
 # Decisions index
 
-Authoritative local log: ../IMPLEMENTATION_PLAN.md, D01–D19.
+Authoritative local log: ../IMPLEMENTATION_PLAN.md, D01–D20.
 Measured corrections: ../VERIFICATION.md. Deferred work: ../BACKLOG.md.
 Prior-art hypotheses and transfer experiment gates: ../PRIOR_ART.md.
 

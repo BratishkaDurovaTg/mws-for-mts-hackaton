@@ -1,7 +1,7 @@
 # Verification record
 
-Дата: 2026-10-21. Scope: подготовительный software pipeline без official
-данных и pretrained weights. Это не production model validation.
+Initial preparation2026-10-21; real-runtime update2026-10-22. Official data
+is unavailable. The real-model checks below establish mechanics, not production quality.
 
 ## Phase gates
 
@@ -14,10 +14,11 @@
 | Baseline | Empty/rules previews: F1=0 /0.590909 | Synthetic mechanics only |
 | Installed package | uv sync --locked --no-editable; separate call imports site-packages | PASS |
 | Tests | uv run --locked --no-editable pytest -q without PYTHONPATH:279passed | PASS |
-| Lint/format | Ruff check/format src tests scripts:47files | PASS |
+| Lint/format | Ruff check/format src tests scripts | PASS |
 | Wheel | uv build --wheel | PASS; independent replay recorded below |
 | HF/SFT contracts | Fake tokenizer/model tests for local load, template/masking/EOS, budgets/retries, split/gates/hashes | PASS contracts only |
-| Real LLM baseline/tiny-overfit/SFT | No weights or ML extra installed | NOT RUN |
+| Real LLM execution/profile | Qwen0.5B,BF16,MPS;6real responses scored | PASS execution;0/6schema-valid, extraction baseline REJECT |
+| Real LoRA smoke/tiny/reload | 2updates;100-step tiny;2/2train targets exact after reload | PASS mechanics only;no full SFT |
 | Official scorer/submission/runtime | Materials not received | PENDING spec/data/hardware |
 
 ## Measured defects corrected during review
@@ -64,8 +65,9 @@ hidden cache state is required by that workflow.
 
 Local preparation is deliverable after clean replay/artifact checks. The ML
 product requires official schema/scorer/data/runtime and actual LLM baseline,
-training/generation and resource validation. No weights were downloaded, no
-real support data sent to services, no paid/long GPU jobs or autoresearch run.
+training/generation and resource validation. D17 explicitly authorized one
+small local checkpoint and bounded mechanical training. No real support data
+was sent to services; full SFT, paid jobs and autoresearch remain unstarted.
 
 ## Final replay and saved artifacts
 
@@ -142,8 +144,8 @@ downloaded to ignored `models/`;988097824weight bytes, SHA256
 matches Hub LFS digest. Native local-only safetensors load succeeded in BF16
 on MPS:494032768parameters,11.685s including initial imports,1006776576MPS
 allocated bytes after load (snapshot, not peak). Acquisition/hardware/token
-length evidence lives in `artifacts/real-ml/`; actual inference and PEFT gates
-are still in progress at this checkpoint.
+length evidence lives in `artifacts/real-ml/`. This preflight checkpoint
+preceded the measured inference/PEFT results below.
 
 Before generation, selected six existing synthetic cases (empty, HTTP code,
 UUID, negation, version/history, two-message correction context). Fixed seed42,
@@ -154,4 +156,68 @@ SFT sequences fit2602tokens; no silent truncation or new guessed ontology.
 Day-1 runbook now has timed30m/2h/4h/8h actions and exact-source requirement
 capture. Backlog is current. D18 adds three bounded industrial lessons, without
 data acquisition or external-data training. The next empirical gate is real
-inference/profiling followed by one finite LoRA smoke and adapter reload.
+inference/profiling followed by one finite LoRA smoke and adapter reload;
+these gates are now completed below.
+
+## Real-runtime results2026-10-22
+
+Reviewed synthetic-derived copies and file hashes:
+`experiments/runtime_probe_20261022/manifest.json`. Five new ledger runs preserve
+all original commits/dirty flags/commands/hashes; prior history is unchanged.
+Raw traces were inspected against the committed fixtures. No model weights,
+optimizer checkpoints, public-corpus text or real customer text is published.
+
+Same six diagnostic rows,one timed pass,no warmup; ordinary empty/rules execute
+on CPU, Qwen uses MPS. This is a resource/reference table, not a Pareto ranking:
+the failed Qwen extractor is ineligible for quality/resource ranking.
+
+| Backend | Fixture F1 | Schema-valid responses | p50 / p95 seconds | OS process peak RAM bytes | Weight bytes |
+| --- | --- | --- | --- | --- | --- |
+| Empty | 0 | 6/6 | .00000104 / .00000175 | 34766848 | 0 |
+| Rules | .666667 | 6/6 | .00002098 / .00031155 | 35078144 | 0 |
+| Qwen0.5B strict | 0 | 0/6 | 2.01304 / 3.22251 | 557121536 | 988097824 |
+
+Qwen cold startup=7.16847s (excludes process spawn),load=4.29327s,
+generated tokens/sec=64.1475,accepted goodput=0. Six latency samples are a
+small mechanical observation, not a stable service percentile. All6raw
+outputs were valid JSON syntax; all6failed the schema. `parse_failure_rate=1`
+includes schema rejection. FP=0/unsupported-evidence-rate=0 after rejection
+does **not** establish absence of hallucination; semantic hallucination rate=null.
+Observed: invalid evidence fields/nesting, invented facts on empty input,
+unsupported404explanation, invalid qualifiers and history confusion. UUID text
+was copied literally once, but no fact passed the extraction contract.
+
+Real LoRA smoke:540672trainable parameters,2optimizer updates,finite gradients;
+loss .60619831→.53996742;16.3464s for evaluate/train/generate/save. Adapter
+weight file=2175168bytes; tokenizer+metadata make the directory13606698bytes.
+Separate-process smoke adapter reload generated6real responses; schema failures
+remained. KEEP only the mechanical gate, not an extraction improvement.
+
+One optional tiny stage used the same fresh base/recipe and frozen train split:
+100steps,218.987s,loss .60619831→.000911929,finite gradients,2/2training fact
+sets exact. Separate-process reload identifies `PeftModelForCausalLM` with
+adapter `default`; both real generations pass parser/schema/evidence audit.
+These are memorized `syn-action`/`syn-assumption`, not held-out quality.
+
+MPS allocation snapshots≈1.01GB and driver snapshots are saved in raw traces;
+they are not peaks. CUDA/VRAM=null. OS RSS does not capture all MPS/unified
+memory; do not add overlapping measurements or infer target-hardware fitness.
+
+Locked dependencies needed no changes; no core runtime defect or new unit test
+was required. Current pre-spec P0 mechanics and Day-1 readiness are complete.
+Stop generic optimization. Full SFT,transfer,quantization,model tournaments and
+autoresearch wait for official data/scorer/rules. Highest-value next step:
+ingest official materials with `OFFICIAL_ADAPTATION.md` when provided.
+
+Final local checks after the runtime iteration:279tests passed with installed
+ML extra, Ruff check/format passed (48Python files), wheel rebuilt. A new,
+independent core-only wheel environment validated/inferred/evaluated the six
+published diagnostic rows with zero technical failures (rules F1=.666667,
+software reference only). No source path injection or model weights required
+for this package check. Publication file hashes and unchanged ledger prefix
+were verified before commit; corresponding CI is checked on the pushed head.
+
+Publication finalization2026-10-23:32published-file hashes and5run-copy paths
+verified; all8published inputs equal committed synthetic fixtures;7unique
+ledger IDs retain their four-field contracts and unchanged historical prefix.
+No additional model training or speculative preparation was started.
